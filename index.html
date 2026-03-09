@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Peter Gratton — Editor & Writer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1917;
+    --paper: #F8F6F1;
+    --warm-gray: #8C8579;
+    --rule: #D4CFC6;
+    --crimson: #8B1C1C;
+    --cream-dark: #EDE9E1;
+    --serif: 'Cormorant', Georgia, serif;
+    --serif-alt: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 18px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif-alt);
+    font-weight: 400;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    height: 64px;
+  }
+
+  .nav-name {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--ink);
+    border-bottom-color: var(--crimson);
+  }
+
+  /* ── PAGES ── */
+  .page { display: none; padding-top: 64px; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ── HOME ── */
+  #home .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 64px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  #home .hero-left {
+    padding: 6rem 4rem 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--rule);
+  }
+
+  #home .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 1.5rem;
+  }
+
+  #home .hero-name {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+
+  #home .hero-name em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--crimson);
+  }
+
+  #home .hero-statement {
+    font-family: var(--serif-alt);
+    font-size: 1.2rem;
+    line-height: 1.75;
+    color: var(--ink);
+    max-width: 42ch;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  #home .hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    background: none;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn-primary:hover { background: var(--crimson); }
+
+  .btn-outline {
+    border: 1px solid var(--rule);
+    color: var(--warm-gray);
+  }
+  .btn-outline:hover { border-color: var(--ink); color: var(--ink); }
+
+  #home .hero-right {
+    padding: 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--cream-dark);
+  }
+
+  .featured-label {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .featured-label::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--crimson);
+  }
+
+  .featured-list { list-style: none; }
+
+  .featured-list li {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .featured-list li:first-child { border-top: 1px solid var(--rule); }
+  .featured-list li:hover { opacity: 0.7; }
+
+  .featured-cat {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--crimson);
+  }
+
+  .featured-title {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+
+  /* ── SECTION SHARED ── */
+  .section-header {
+    padding: 4rem 4rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    line-height: 1.1;
+  }
+
+  .section-sub {
+    margin-top: 1rem;
+    font-family: var(--serif-alt);
+    font-size: 1.05rem;
+    color: var(--warm-gray);
+    max-width: 60ch;
+    font-style: italic;
+  }
+
+  /* ── WRITING ── */
+  .writing-grid {
+    padding: 3rem 4rem;
+  }
+
+  .writing-category {
+    margin-bottom: 3.5rem;
+  }
+
+  .cat-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .cat-name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+  }
+
+  .cat-count {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--warm-gray);
+    letter-spacing: 0.08em;
+  }
+
+  .articles-list { display: flex; flex-direction: column; gap: 0; }
+
+  .article-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 2px;
+  }
+  .article-row:hover { background: var(--cream-dark); padding-left: 0.5rem; padding-right: 0.5rem; margin: 0 -0.5rem; }
+
+  .article-row-title {
+    font-family: var(--serif-alt);
+    font-size: 1rem;
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  .article-highlight .article-row-title {
+    font-weight: 500;
+    font-size: 1.05rem;
+  }
+
+  .article-desc {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    color: var(--warm-gray);
+    margin-top: 0.25rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .article-badge {
+    font-family: var(--sans);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--cream-dark);
+    color: var(--crimson);
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap;
+    align-self: start;
+    margin-top: 0.25rem;
+  }
+
+  /* ── EDITING ── */
+  .editing-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .editing-col {
+    padding: 3rem 4rem;
+    border-right: 1px solid var(--rule);
+  }
+  .editing-col:last-child { border-right: none; }
+
+  .editing-col h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--crimson);
+  }
+
+  .stat-label {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  .editing-col p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .expertise-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .expertise-list li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: start;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .expertise-list li::before {
+    content: '—';
+    color: var(--crimson);
+    font-weight: 300;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .editing-full {
+    padding: 3rem 4rem;
+    border-top: 1px solid var(--rule);
+    background: var(--cream-dark);
+  }
+
+  .editing-full h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dataviz-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .dataviz-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+  }
+
+  .dataviz-card-label {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 0.5rem;
+  }
+
+  .dataviz-card-title {
+    font-family: var(--serif-alt);
+    font-size: 0.95rem;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  /* ── ABOUT ── */
+  #about .about-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  #about .about-main {
+    padding: 3.5rem 4rem;
+    border-right: 1px solid var(--rule);
+  }
+
+  #about .about-main p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+
+  #about .about-main p:first-of-type {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--ink);
+    border-left: 3px solid var(--crimson);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  #about .about-sidebar {
+    padding: 3.5rem 3rem;
+  }
+
+  #about .about-sidebar h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  #about .role-list {
+    list-style: none;
+    margin-bottom: 2.5rem;
+  }
+
+  #about .role-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  #about .role-list li strong {
+    display: block;
+    font-weight: 500;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  #about .role-list li span {
+    color: var(--warm-gray);
+    font-family: var(--sans);
+    font-size: 0.72rem;
+  }
+
+  .contact-block {
+    padding: 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-block h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-block p {
+    font-size: 0.95rem;
+    color: var(--warm-gray);
+    max-width: 50ch;
+    margin-bottom: 1rem;
+  }
+
+  .contact-link {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--crimson);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .contact-link::after { content: ' ↗'; }
+  .contact-link:hover { text-decoration: underline; }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--cream-dark);
+    border: 1px solid var(--rule);
+    padding: 0.9rem 1.5rem;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    width: fit-content;
+  }
+  .download-btn:hover { background: var(--rule); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    color: var(--warm-gray);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page.active .hero-name,
+  .page.active .hero-statement,
+  .page.active .hero-cta,
+  .page.active .section-title,
+  .page.active .section-sub {
+    animation: fadeUp 0.55s ease both;
+  }
+
+  .page.active .hero-statement { animation-delay: 0.08s; }
+  .page.active .hero-cta { animation-delay: 0.16s; }
+  .page.active .section-sub { animation-delay: 0.1s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name" onclick="showPage('home')">Peter Gratton</span>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('writing')" id="nav-writing">Writing</a></li>
+    <li><a onclick="showPage('editing')" id="nav-editing">Editing</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ HOME ══════════ -->
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Senior Editor &amp; Writer</p>
+      <h1 class="hero-name">Peter<br><em>Gratton</em></h1>
+      <p class="hero-statement">I cover how economic and technological power reshapes everyday life — through data-driven investigations, narrative features, and analysis that makes the abstract legible for anyone paying attention.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="showPage('writing')">Read the work</button>
+        <button class="btn btn-outline" onclick="showPage('about')">About &amp; contact</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <p class="featured-label">Selected recent work</p>
+      <ul class="featured-list">
+        <li onclick="window.open('#','_blank')">
+          <span class="featured-cat">Investigation</span>
+          <span class="featured-title">Instacart Was Charging Wildly Diverging Prices for Different Shoppers — So I Checked My Costco Orders</span>
+        </li>
+        <li onclick="window.open('#','_blank')">
+          <span class="featured-cat">Data journalism</span>
+          <span class="featured-title">A 2003 Study Found Black College Grads Had the Same Job Callback Chances as White Convicted Felons. Has Anything Changed?</span>
+        </li>
+        <li onclick="window.open('#','_blank')">
+          <span class="featured-cat">Policy &amp; news</span>
+          <span class="featured-title">Don't Laugh — Here Is How Penguins Waddled Into Trump's Trade War</span>
+        </li>
+        <li onclick="window.open('#','_blank')">
+          <span class="featured-cat">Feature</span>
+          <span class="featured-title">'I Had To Get Out' — Black Americans Are Building Wealth by Relocating to Africa</span>
+        </li>
+        <li onclick="window.open('#','_blank')">
+          <span class="featured-cat">Accountability</span>
+          <span class="featured-title">The Financial Advisor Industry Still Lacks Diversity</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WRITING ══════════ -->
+<section id="writing" class="page">
+  <div class="section-header">
+    <p class="section-eyebrow">Portfolio</p>
+    <h2 class="section-title">Writing</h2>
+    <p class="section-sub">Investigations, features, data journalism, and news analysis drawn from 340+ articles at Investopedia.</p>
+  </div>
+
+  <div class="writing-grid">
+
+    <!-- TOP 10 -->
+    <div class="writing-category">
+      <div class="cat-header">
+        <span class="cat-name">Signature Work</span>
+        <span class="cat-count">Top 10 selections</span>
+      </div>
+      <div class="articles-list">
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">Instacart Was Charging Wildly Diverging Prices for Different Shoppers, an Investigation Found — So I Checked My Costco Orders</div>
+            <div class="article-desc">Combined a Consumer Reports investigation with first-person data analysis of a year of orders. Rare blend of investigative findings and personal verification — gave readers a template to check their own accounts.</div>
+          </div>
+          <span class="article-badge">Investigation</span>
+        </a>
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">A 2003 Study Found that Black College Grads Had the Same Job Callback Chances as White Convicted Felons — Has Anything Changed?</div>
+            <div class="article-desc">Revisits a landmark study with new meta-analysis of 90+ field experiments, tracing hiring discrimination into AI-driven systems.</div>
+          </div>
+          <span class="article-badge">Data / Research</span>
+        </a>
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">The Financial Advisor Industry Still Lacks Diversity</div>
+            <div class="article-desc">Deeply reported investigation covering decades of industry failures, $200M+ in discrimination lawsuit settlements, and structural barriers. Long-form accountability journalism with receipts.</div>
+          </div>
+          <span class="article-badge">Accountability</span>
+        </a>
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">Don't Laugh — Here Is How Penguins Waddled Into Trump's Trade War</div>
+            <div class="article-desc">Uses an absurdist hook — tariffs on uninhabited penguin islands — to illuminate systemic flaws in origin-sourcing and trade enforcement. Complex policy made accessible and entertaining.</div>
+          </div>
+          <span class="article-badge">News / Policy</span>
+        </a>
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">'I Had To Get Out' — Black Americans Are Building Wealth by Relocating to Africa</div>
+            <div class="article-desc">Interview-rich feature weaving personal narratives (including Kelis) with financial data on cost-of-living arbitrage. Balances emotional push factors with practical financial guidance.</div>
+          </div>
+          <span class="article-badge">Feature</span>
+        </a>
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">60-Year-Olds Brace for Insurance Hikes of Up to $48K: 'I'm Terrified'</div>
+            <div class="article-desc">Centers one woman's story within a massive policy crisis — ACA credit expiration affecting 20M+ people. Human cost of abstract policy debates. Strong character-driven news reporting.</div>
+          </div>
+          <span class="article-badge">News</span>
+        </a>
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">Target Faces Boycott: 200 Days Without DEI, Financial Impact Grows</div>
+            <div class="article-desc">Tracks the concrete financial consequences ($20B in lost shareholder value) of Target's DEI rollback with specificity — stock data, foot traffic, competitor comparisons.</div>
+          </div>
+          <span class="article-badge">Data journalism</span>
+        </a>
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">The Hidden Cost of AI: How Data Centers Are Draining Water Resources and What It Means for Investors</div>
+            <div class="article-desc">Connects AI's explosive growth to water scarcity with striking specifics (training ChatGPT used 185,000 gallons). Bridges environmental reporting with investment analysis.</div>
+          </div>
+          <span class="article-badge">Tech / Climate</span>
+        </a>
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">How 20 Years of Poverty Shaped a Former Monk's Approach to Wealth Management</div>
+            <div class="article-desc">A compelling profile of a Marine-turned-monk-turned-financial-advisor. Narrative feature writing at its best — character illuminating an idea.</div>
+          </div>
+          <span class="article-badge">Profile</span>
+        </a>
+
+        <a class="article-row article-highlight" href="#" target="_blank">
+          <div>
+            <div class="article-row-title">Can Blockchain Solve the Global Retirement Crisis?</div>
+            <div class="article-desc">An ambitious, skeptical deep-dive tracing retirement crisis narratives back to the 1930s, critically examining 30+ proposed solutions. Shows willingness to push back against hype.</div>
+          </div>
+          <span class="article-badge">Explainer</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- NEWS -->
+    <div class="writing-category">
+      <div class="cat-header">
+        <span class="cat-name">News &amp; Current Events</span>
+        <span class="cat-count">52 articles</span>
+      </div>
+      <div class="articles-list">
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Could Trump's Tariffs Cause a Worldwide Recession?</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Dollar Hits 4-Year Low — How It Could Impact Your Wallet and Financial Plans</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Amazon, UPS and Other Major Companies Are Making Big Job Cuts. Is AI To Blame?</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Goldman Sachs Warns Gold May Reach $5,000 if Federal Reserve's Independence Is Compromised</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Four-Fifths of Credit Card Accounts Could Vanish Under Trump's Rate Cap, Experts Say</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Forget Sports Betting — Americans Found a New $300M Game: The Fed Meeting</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Anthropic CEO Warns of AI's Threat to Jobs: 'Unemployed or Very-Low-Wage Underclass' Looms</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Starbucks Closed Over 450 Stores This Week — Is Your Favorite Location on the List?</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Ray Dalio Warns: Wealth Gaps Fuel Extreme Policies. Are Your Investments at Political Risk?</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">The Mystery of Venezuela's Oil: Why the World's Largest Reserves Are Barely Being Pumped</div></div></a>
+      </div>
+    </div>
+
+    <!-- DATA / RESEARCH -->
+    <div class="writing-category">
+      <div class="cat-header">
+        <span class="cat-name">Data &amp; Research-Driven</span>
+        <span class="cat-count">71 articles</span>
+      </div>
+      <div class="articles-list">
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">How Will Your 401(k) Fare If Trump Tariffs Push Foreign Investors Out of U.S. Stocks?</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Americans Under 35 Are Finally Buying Homes Again, But Many Are Still Locked Out</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Gold, Silver, and Copper Are All Hitting Record Highs — Here's What's Driving the Frenzy</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Billions Lost by Investors as Meme Stock Scams Surge</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">The Dow Broke a Half-Century-Old Record — Here's What It Could Mean for Your Money in 2025</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Americans Face Rising Costs in the 'Annoyance Economy' — Experts Explain the Hidden Expenses</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Social Security Celebrates 90 Years This Month, Yet Trust Fund Faces Potential Collapse Within a Decade</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Zero-Day Options Had Their Best Month in May. But Should You Join the Party?</div></div></a>
+      </div>
+    </div>
+
+    <!-- FEATURES / PROFILES -->
+    <div class="writing-category">
+      <div class="cat-header">
+        <span class="cat-name">Features &amp; Profiles</span>
+        <span class="cat-count">Selected pieces</span>
+      </div>
+      <div class="articles-list">
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">How Mexico's "Tequila Lake" Exposes a Market Crisis That Might Affect Your Portfolio</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Carlos Ghosn's Escape From Japan in a Box and How a Whistleblower Brought Him Down</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Larry Ellison's Rise: How He Snagged the Title of World's Richest Person From Elon Musk</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">What Does It Cost to Put on a Beyoncé Show?</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Surprising Connection Between Nut Farming and California's Fire Risk</div></div></a>
+        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">How Would a Texas Stock Exchange Compete With NYSE and Nasdaq?</div></div></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ EDITING ══════════ -->
+<section id="editing" class="page">
+  <div class="section-header">
+    <p class="section-eyebrow">Editorial leadership</p>
+    <h2 class="section-title">Editing &amp; Strategy</h2>
+    <p class="section-sub">A decade of building editorial teams, developing data-driven content strategy, and leading platforms through the transition beyond traditional SEO.</p>
+  </div>
+
+  <div class="editing-body">
+    <div class="editing-col">
+      <h3>Investopedia — Senior Editor</h3>
+      <div class="stat-row">
+        <div class="stat"><span class="stat-number">10</span><span class="stat-label">Direct reports</span></div>
+        <div class="stat"><span class="stat-number">15</span><span class="stat-label">Articles edited weekly</span></div>
+        <div class="stat"><span class="stat-number">1,500+</span><span class="stat-label">Data visualizations</span></div>
+      </div>
+      <p>Led a ten-person editorial team producing financial news, analysis, and explainers for one of the web's largest personal finance destinations. Managed editorial calendar, contributor development, and quality standards across rapidly evolving coverage areas including markets, policy, technology, and inequality.</p>
+      <p>Wrote 3–5 original pieces weekly alongside editing responsibilities — a workload requiring both managerial range and sustained writerly output.</p>
+    </div>
+
+    <div class="editing-col">
+      <h3>Areas of Expertise</h3>
+      <ul class="expertise-list">
+        <li><strong>Post-SEO platform strategy.</strong> Member of Investopedia's Google Discover optimization taskforce; developed editorial frameworks for content that performs on discovery and social platforms rather than search alone.</li>
+        <li><strong>Data journalism.</strong> Created 1,500+ original Datawrapper visualizations covering markets, economic data, and demographic research. Fluent in ACS PUMS, SCF, BLS Consumer Expenditure Survey, and ADP datasets.</li>
+        <li><strong>Editorial voice development.</strong> Built style guides and workflow tools to help contributors move from keyword-driven to reader-driven writing.</li>
+        <li><strong>Investigative reporting.</strong> Led original investigations including Instacart's dynamic pricing and Starbucks store closure patterns — projects that generated significant audience and press attention.</li>
+        <li><strong>Economic and policy translation.</strong> Deep expertise making Federal Reserve decisions, tariff policy, labor market shifts, and financial regulation legible for general audiences without condescension.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="editing-full">
+    <h3>Data Visualization — Selected Work</h3>
+    <div class="dataviz-showcase">
+      <div class="dataviz-card">
+        <div class="dataviz-card-label">Labor markets</div>
+        <div class="dataviz-card-title">Occupational dissimilarity index — AI vs. prior technology eras (Budget Lab / BLS)</div>
+      </div>
+      <div class="dataviz-card">
+        <div class="dataviz-card-label">Housing</div>
+        <div class="dataviz-card-title">House-rich, cash-poor: homeowner equity vs. liquid assets by age cohort (ACS PUMS 2024)</div>
+      </div>
+      <div class="dataviz-card">
+        <div class="dataviz-card-label">Wealth inequality</div>
+        <div class="dataviz-card-title">Net worth distributions across racial and age groups (Survey of Consumer Finances)</div>
+      </div>
+      <div class="dataviz-card">
+        <div class="dataviz-card-label">Markets</div>
+        <div class="dataviz-card-title">Cross-asset 2025 YTD returns: equities, commodities, currencies, crypto</div>
+      </div>
+      <div class="dataviz-card">
+        <div class="dataviz-card-label">Policy</div>
+        <div class="dataviz-card-title">ACA premium credit expiration impact by age and income band</div>
+      </div>
+      <div class="dataviz-card">
+        <div class="dataviz-card-label">Corporate accountability</div>
+        <div class="dataviz-card-title">Target shareholder value vs. DEI rollback timeline, with foot traffic overlay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about" class="page">
+  <div class="section-header">
+    <p class="section-eyebrow">Background</p>
+    <h2 class="section-title">About</h2>
+  </div>
+
+  <div class="about-body">
+    <div class="about-main">
+      <p>I'm an editor and writer who covers the intersection of economic power, financial markets, and everyday life — the places where a Fed decision or a tariff schedule or a corporate diversity rollback lands on real people with real bills.</p>
+
+      <p>For the past decade I've worked in financial and business journalism, most recently as a Senior Editor at Investopedia, where I led a team of ten, produced and edited hundreds of articles, and built more than 1,500 original data visualizations. Along the way I've been part of the conversation about what financial journalism looks like in the post-search era — how editors build audiences through discovery and social rather than keyword traffic, and what that means for how stories are told.</p>
+
+      <p>My background is unusual for financial journalism. Before moving into editorial work, I trained as a philosopher — my PhD focused on political theory and continental thought — and that formation shapes how I think about economic stories. I'm drawn to the structural over the symptomatic, the historical over the immediately reactive, the question that doesn't have an easy answer. It's why I spent months reporting on AI's effect on labor markets, tracing the argument back to earlier technology cycles. It's why a story about financial advisors and diversity became a long-form investigation into decades of industry failure rather than a round-up of opinion.</p>
+
+      <p>I'm currently at work on a book — <em>Grift Society</em> — examining how speculation and confidence became the organizing principles of contemporary American capitalism, from 401(k)s to Robinhood to prediction markets. The project sits at the intersection of financial journalism and critical theory, and it's been shaping how I think about money stories for years.</p>
+
+      <p>I'm based in New Orleans with my wife Jennifer, editor of Forbes Travel Guide. I'm looking for senior editorial roles — editing, writing, strategy — at publications where analytical depth and clear prose are treated as compatible rather than competing virtues.</p>
+    </div>
+
+    <div class="about-sidebar">
+      <h3>Current roles</h3>
+      <ul class="role-list">
+        <li>
+          <strong>Senior Editor</strong>
+          <span>Investopedia</span>
+        </li>
+        <li>
+          <strong>Adjunct Faculty</strong>
+          <span>Contemporary Ethics &amp; Critical Thinking<br>Columbia Southern University</span>
+        </li>
+        <li>
+          <strong>Co-Series Editor</strong>
+          <span>New Perspectives in Ontology<br>Edinburgh University Press</span>
+        </li>
+        <li>
+          <strong>Secretary-Treasurer</strong>
+          <span>Association for Philosophy &amp; Literature</span>
+        </li>
+      </ul>
+
+      <h3>Education</h3>
+      <ul class="role-list">
+        <li>
+          <strong>PhD, Philosophy</strong>
+          <span>DePaul University</span>
+        </li>
+      </ul>
+
+      <h3>Current project</h3>
+      <ul class="role-list">
+        <li>
+          <strong><em>Grift Society</em></strong>
+          <span>Book in progress — how speculation became the organizing principle of contemporary capitalism</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="contact-block">
+    <div>
+      <h2>Get in touch</h2>
+      <p>Available for senior editorial roles, writing assignments, and editorial consulting.</p>
+    </div>
+    <a class="contact-link" href="mailto:peter.gratton@investopedia.com">peter.gratton@investopedia.com</a>
+    <div style="display:flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
+      <a class="download-btn" href="#">↓ Download résumé</a>
+      <a class="download-btn" href="#">↓ Download CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Peter Gratton — Editor &amp; Writer</p>
+  <p>New Orleans, LA &nbsp;·&nbsp; petergratton.com</p>
+</footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
