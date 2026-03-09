@@ -20,612 +20,225 @@
     --serif-alt: 'Cormorant Garamond', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { font-size: 18px; scroll-behavior: smooth; }
-
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--serif-alt);
-    font-weight: 400;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
+  body { background: var(--paper); color: var(--ink); font-family: var(--serif-alt); font-weight: 400; line-height: 1.7; min-height: 100vh; }
 
   /* ── NAV ── */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: var(--paper);
-    border-bottom: 1px solid var(--rule);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 4rem;
-    height: 64px;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--paper); border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3.5rem; height: 60px;
   }
-
   .nav-name {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: 1.05rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    cursor: pointer;
+    font-family: var(--serif); font-weight: 300; font-size: 1rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink);
+    text-decoration: none; cursor: pointer;
   }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--warm-gray);
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.2s;
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
+    font-family: var(--sans); font-size: 0.68rem; font-weight: 400;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray);
+    text-decoration: none; cursor: pointer; transition: color 0.2s;
+    padding-bottom: 2px; border-bottom: 1px solid transparent;
   }
-
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: var(--ink);
-    border-bottom-color: var(--crimson);
-  }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); border-bottom-color: var(--crimson); }
 
   /* ── PAGES ── */
-  .page { display: none; padding-top: 64px; min-height: 100vh; }
+  .page { display: none; padding-top: 60px; min-height: 100vh; }
   .page.active { display: block; }
 
+  /* ── SHARED ── */
+  .section-header { padding: 3.5rem 3.5rem 2.5rem; border-bottom: 1px solid var(--rule); }
+  .section-eyebrow {
+    font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.6rem;
+  }
+  .section-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1; }
+  .section-sub { margin-top: 0.8rem; font-family: var(--serif-alt); font-size: 1rem; color: var(--warm-gray); max-width: 62ch; font-style: italic; }
+
+  .eyebrow {
+    font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--crimson);
+  }
+
   /* ── HOME ── */
-  #home .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: calc(100vh - 64px);
-    border-bottom: 1px solid var(--rule);
-  }
-
+  #home .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 60px); }
   #home .hero-left {
-    padding: 6rem 4rem 6rem 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 1px solid var(--rule);
+    padding: 5rem 3.5rem; display: flex; flex-direction: column;
+    justify-content: center; border-right: 1px solid var(--rule);
   }
-
-  #home .hero-eyebrow {
-    font-family: var(--sans);
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--crimson);
-    margin-bottom: 1.5rem;
-  }
-
   #home .hero-name {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    line-height: 1;
-    letter-spacing: -0.01em;
-    margin-bottom: 2rem;
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(3rem, 5vw, 5.5rem); line-height: 1; letter-spacing: -0.01em;
+    margin-bottom: 1.8rem; margin-top: 1.2rem;
   }
-
-  #home .hero-name em {
-    font-style: italic;
-    font-weight: 300;
-    color: var(--crimson);
-  }
-
+  #home .hero-name em { font-style: italic; color: var(--crimson); }
   #home .hero-statement {
-    font-family: var(--serif-alt);
-    font-size: 1.2rem;
-    line-height: 1.75;
-    color: var(--ink);
-    max-width: 42ch;
-    margin-bottom: 2.5rem;
-    font-weight: 400;
+    font-family: var(--serif-alt); font-size: 1.15rem; line-height: 1.8;
+    max-width: 44ch; margin-bottom: 2.5rem;
   }
-
-  #home .hero-cta {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.8rem 1.8rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: none;
-    background: none;
-  }
-
-  .btn-primary {
-    background: var(--ink);
-    color: var(--paper);
-  }
+  .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.6rem; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; background: none; }
+  .btn-primary { background: var(--ink); color: var(--paper); }
   .btn-primary:hover { background: var(--crimson); }
-
-  .btn-outline {
-    border: 1px solid var(--rule);
-    color: var(--warm-gray);
-  }
+  .btn-outline { border: 1px solid var(--rule); color: var(--warm-gray); }
   .btn-outline:hover { border-color: var(--ink); color: var(--ink); }
 
-  #home .hero-right {
-    padding: 6rem 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: var(--cream-dark);
-  }
-
+  #home .hero-right { padding: 5rem 3.5rem; display: flex; flex-direction: column; justify-content: center; background: var(--cream-dark); }
   .featured-label {
-    font-family: var(--sans);
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--warm-gray);
-    margin-bottom: 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+    font-family: var(--sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--warm-gray); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
   }
-  .featured-label::before {
-    content: '';
-    display: inline-block;
-    width: 2rem;
-    height: 1px;
-    background: var(--crimson);
-  }
-
+  .featured-label::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: var(--crimson); }
   .featured-list { list-style: none; }
-
   .featured-list li {
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--rule);
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    cursor: pointer;
-    transition: opacity 0.2s;
+    padding: 1.1rem 0; border-bottom: 1px solid var(--rule);
+    display: flex; flex-direction: column; gap: 0.25rem; cursor: pointer; transition: opacity 0.2s;
   }
   .featured-list li:first-child { border-top: 1px solid var(--rule); }
-  .featured-list li:hover { opacity: 0.7; }
-
-  .featured-cat {
-    font-family: var(--sans);
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--crimson);
-  }
-
-  .featured-title {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.35;
-    color: var(--ink);
-  }
-
-  /* ── SECTION SHARED ── */
-  .section-header {
-    padding: 4rem 4rem 3rem;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .section-eyebrow {
-    font-family: var(--sans);
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--crimson);
-    margin-bottom: 0.8rem;
-  }
-
-  .section-title {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
-    line-height: 1.1;
-  }
-
-  .section-sub {
-    margin-top: 1rem;
-    font-family: var(--serif-alt);
-    font-size: 1.05rem;
-    color: var(--warm-gray);
-    max-width: 60ch;
-    font-style: italic;
-  }
+  .featured-list li:hover { opacity: 0.65; }
+  .featured-cat { font-family: var(--sans); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson); }
+  .featured-title { font-family: var(--serif); font-size: 1.02rem; font-weight: 500; line-height: 1.35; }
 
   /* ── WRITING ── */
-  .writing-grid {
-    padding: 3rem 4rem;
-  }
+  .writing-bio { padding: 2.5rem 3.5rem; border-bottom: 1px solid var(--rule); }
+  .writing-bio p { font-family: var(--serif-alt); font-size: 1.05rem; line-height: 1.9; color: var(--ink); max-width: 74ch; }
 
-  .writing-category {
-    margin-bottom: 3.5rem;
+  .cat-rows { border-bottom: 1px solid var(--rule); }
+  .cat-row {
+    display: grid; grid-template-columns: 4rem 1fr 6rem;
+    padding: 1.6rem 3.5rem; border-bottom: 1px solid var(--rule);
+    cursor: pointer; transition: background 0.15s; align-items: start; gap: 1.5rem;
   }
+  .cat-row:hover, .cat-row.open { background: var(--cream-dark); }
+  .cat-row-left { padding-top: 0.2rem; }
+  .cat-row-num { font-family: var(--sans); font-size: 0.62rem; font-weight: 400; color: var(--rule); letter-spacing: 0.1em; }
+  .cat-row-mid { display: flex; flex-direction: column; gap: 0.4rem; }
+  .cat-row-name { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; line-height: 1.2; transition: color 0.15s; }
+  .cat-row:hover .cat-row-name, .cat-row.open .cat-row-name { color: var(--crimson); }
+  .cat-row-desc { font-family: var(--sans); font-size: 0.72rem; color: var(--warm-gray); line-height: 1.65; font-weight: 300; max-width: 65ch; }
+  .cat-row-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; padding-top: 0.2rem; }
+  .cat-row-count { display: none; }
+  .cat-toggle { font-family: var(--sans); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); }
+  .cat-row.open .cat-toggle { opacity: 0.45; }
 
-  .cat-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--rule);
-  }
+  .cat-articles { display: none; padding: 0 3.5rem 2rem; border-bottom: 1px solid var(--rule); }
+  .cat-articles.open { display: block; }
+  .cat-articles-header { padding: 1.5rem 0 1rem; display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); margin-bottom: 0.5rem; }
+  .cat-articles-name { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; }
+  .close-cat { font-family: var(--sans); font-size: 0.62rem; font-weight: 400; color: var(--warm-gray); cursor: pointer; letter-spacing: 0.08em; }
+  .close-cat:hover { color: var(--ink); }
+  .article-list { columns: 2; column-gap: 3rem; list-style: none; }
+  .article-list li { break-inside: avoid; padding: 0.65rem 0; border-bottom: 1px solid var(--cream-dark); }
+  .article-list a { font-family: var(--serif-alt); font-size: 0.92rem; line-height: 1.45; color: var(--ink); text-decoration: none; display: block; }
+  .article-list a:hover { color: var(--crimson); }
+  .article-list .highlight a { font-weight: 600; }
 
-  .cat-name {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 1.3rem;
-    letter-spacing: 0.01em;
-  }
+  /* Essays category special */
+  .essay-list { list-style: none; }
+  .essay-item { padding: 1.2rem 0; border-bottom: 1px solid var(--rule); }
+  .essay-item:first-child { border-top: 1px solid var(--rule); }
+  .essay-outlet { font-family: var(--sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.3rem; }
+  .essay-title { font-family: var(--serif-alt); font-size: 1rem; font-weight: 500; line-height: 1.4; }
+  .essay-title a { color: var(--ink); text-decoration: none; }
+  .essay-title a:hover { color: var(--crimson); }
 
-  .cat-count {
-    font-family: var(--sans);
-    font-size: 0.65rem;
-    font-weight: 400;
-    color: var(--warm-gray);
-    letter-spacing: 0.08em;
-  }
+  /* ── DATA JOURNALISM ── */
+  .dj-body { display: grid; grid-template-columns: 3fr 2fr; border-bottom: 1px solid var(--rule); }
+  .dj-main { padding: 3rem 3.5rem; border-right: 1px solid var(--rule); }
+  .dj-main p { font-size: 0.97rem; line-height: 1.85; margin-bottom: 1.2rem; }
+  .dj-main p:first-of-type { font-size: 1.15rem; font-style: italic; border-left: 3px solid var(--crimson); padding-left: 1.25rem; margin-bottom: 1.8rem; }
+  .dj-sidebar { padding: 3rem 2.5rem; }
+  .dj-sidebar h3 { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--rule); }
+  .source-list { list-style: none; margin-bottom: 2.5rem; }
+  .source-list li { padding: 0.55rem 0; border-bottom: 1px solid var(--cream-dark); display: flex; flex-direction: column; gap: 0.1rem; }
+  .source-name { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; }
+  .source-desc { font-family: var(--sans); font-size: 0.68rem; color: var(--warm-gray); font-weight: 300; }
 
-  .articles-list { display: flex; flex-direction: column; gap: 0; }
-
-  .article-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: start;
-    gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--cream-dark);
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-    transition: background 0.15s;
-    border-radius: 2px;
-  }
-  .article-row:hover { background: var(--cream-dark); padding-left: 0.5rem; padding-right: 0.5rem; margin: 0 -0.5rem; }
-
-  .article-row-title {
-    font-family: var(--serif-alt);
-    font-size: 1rem;
-    line-height: 1.45;
-    font-weight: 400;
-  }
-
-  .article-highlight .article-row-title {
-    font-weight: 500;
-    font-size: 1.05rem;
-  }
-
-  .article-desc {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    color: var(--warm-gray);
-    margin-top: 0.25rem;
-    line-height: 1.5;
-    font-weight: 300;
-  }
-
-  .article-badge {
-    font-family: var(--sans);
-    font-size: 0.58rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: var(--cream-dark);
-    color: var(--crimson);
-    padding: 0.2rem 0.5rem;
-    white-space: nowrap;
-    align-self: start;
-    margin-top: 0.25rem;
-  }
+  .dj-examples { padding: 3rem 3.5rem; background: var(--cream-dark); border-bottom: 1px solid var(--rule); }
+  .dj-examples h3 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin-bottom: 1.5rem; }
+  .viz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); }
+  .viz-card { background: var(--paper); padding: 1.4rem; }
+  .viz-label { font-family: var(--sans); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.4rem; }
+  .viz-title { font-family: var(--serif-alt); font-size: 0.9rem; line-height: 1.45; font-weight: 500; }
 
   /* ── EDITING ── */
-  .editing-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-  }
+  .editing-top { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--rule); }
+  .editing-col { padding: 3rem 3.5rem; }
+  .editing-col:first-child { border-right: 1px solid var(--rule); }
+  .editing-col h3 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); }
+  .stat-row { display: flex; gap: 2.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .stat { display: flex; flex-direction: column; gap: 0.15rem; }
+  .stat-number { font-family: var(--serif); font-size: 2.4rem; font-weight: 300; line-height: 1; color: var(--crimson); }
+  .stat-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); }
+  .editing-col p { font-size: 0.94rem; line-height: 1.8; margin-bottom: 0.9rem; }
+  .expertise-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+  .expertise-list li { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; font-size: 0.9rem; line-height: 1.6; }
+  .expertise-list li::before { content: '—'; color: var(--crimson); font-weight: 300; }
+  .expertise-list li strong { font-weight: 500; }
 
-  .editing-col {
-    padding: 3rem 4rem;
-    border-right: 1px solid var(--rule);
-  }
-  .editing-col:last-child { border-right: none; }
+  .editing-bottom { padding: 3rem 3.5rem; border-bottom: 1px solid var(--rule); }
+  .editing-bottom h3 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin-bottom: 0.75rem; }
+  .editing-bottom .intro { font-family: var(--sans); font-size: 0.78rem; color: var(--warm-gray); max-width: 70ch; margin-bottom: 1.5rem; line-height: 1.6; }
+  .cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); }
+  .cap-card { background: var(--paper); padding: 1.2rem; }
+  .cap-title { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
+  .cap-desc { font-family: var(--sans); font-size: 0.65rem; color: var(--warm-gray); line-height: 1.55; font-weight: 300; }
 
-  .editing-col h3 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 1.4rem;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .stat-row {
-    display: flex;
-    gap: 2.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .stat-number {
-    font-family: var(--serif);
-    font-size: 2.5rem;
-    font-weight: 300;
-    line-height: 1;
-    color: var(--crimson);
-  }
-
-  .stat-label {
-    font-family: var(--sans);
-    font-size: 0.65rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--warm-gray);
-  }
-
-  .editing-col p {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: var(--ink);
-    margin-bottom: 1rem;
-  }
-
-  .expertise-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .expertise-list li {
-    display: flex;
-    gap: 0.75rem;
-    align-items: start;
-    font-size: 0.92rem;
-    line-height: 1.5;
-  }
-
-  .expertise-list li::before {
-    content: '—';
-    color: var(--crimson);
-    font-weight: 300;
-    flex-shrink: 0;
-    margin-top: 0.05rem;
-  }
-
-  .editing-full {
-    padding: 3rem 4rem;
-    border-top: 1px solid var(--rule);
-    background: var(--cream-dark);
-  }
-
-  .editing-full h3 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .dataviz-showcase {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .dataviz-card {
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    padding: 1.5rem;
-  }
-
-  .dataviz-card-label {
-    font-family: var(--sans);
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--crimson);
-    margin-bottom: 0.5rem;
-  }
-
-  .dataviz-card-title {
-    font-family: var(--serif-alt);
-    font-size: 0.95rem;
-    line-height: 1.45;
-    font-weight: 500;
-  }
+  /* ── BOOK ── */
+  .book-body { display: grid; grid-template-columns: 2fr 1fr; border-bottom: 1px solid var(--rule); }
+  .book-main { padding: 3.5rem 3.5rem; border-right: 1px solid var(--rule); }
+  .book-main .lede { font-size: 1.2rem; font-style: italic; line-height: 1.85; border-left: 3px solid var(--crimson); padding-left: 1.5rem; margin-bottom: 2rem; }
+  .book-main p { font-size: 0.97rem; line-height: 1.85; margin-bottom: 1.2rem; }
+  .book-main h3 { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; margin: 2rem 0 1rem; }
+  .chapter-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .chapter-item { padding: 0.9rem 0; border-bottom: 1px solid var(--cream-dark); display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; }
+  .chapter-num { font-family: var(--sans); font-size: 0.62rem; font-weight: 500; color: var(--crimson); letter-spacing: 0.1em; padding-top: 0.2rem; }
+  .chapter-title { font-family: var(--serif-alt); font-size: 0.96rem; font-weight: 500; line-height: 1.4; }
+  .chapter-sub { font-family: var(--sans); font-size: 0.68rem; color: var(--warm-gray); margin-top: 0.2rem; line-height: 1.5; font-weight: 300; }
+  .book-sidebar { padding: 3.5rem 2.5rem; }
+  .book-sidebar h3 { font-family: var(--serif); font-weight: 500; font-size: 1.05rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--rule); }
+  .book-meta { list-style: none; margin-bottom: 2.5rem; }
+  .book-meta li { padding: 0.55rem 0; border-bottom: 1px solid var(--cream-dark); font-size: 0.87rem; line-height: 1.5; }
+  .book-meta li strong { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; display: block; color: var(--warm-gray); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.1rem; }
+  .prev-books { list-style: none; }
+  .prev-book { padding: 0.9rem 0; border-bottom: 1px solid var(--cream-dark); }
+  .prev-book-title { font-family: var(--serif-alt); font-size: 0.92rem; font-weight: 500; line-height: 1.4; font-style: italic; }
+  .prev-book-pub { font-family: var(--sans); font-size: 0.65rem; color: var(--warm-gray); margin-top: 0.2rem; }
 
   /* ── ABOUT ── */
-  #about .about-body {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 0;
-    border-bottom: 1px solid var(--rule);
-  }
+  .about-body { display: grid; grid-template-columns: 2fr 1fr; border-bottom: 1px solid var(--rule); }
+  .about-main { padding: 3.5rem 3.5rem; border-right: 1px solid var(--rule); }
+  .about-main .lede { font-size: 1.2rem; font-style: italic; line-height: 1.85; border-left: 3px solid var(--crimson); padding-left: 1.5rem; margin-bottom: 2rem; }
+  .about-main p { font-size: 0.97rem; line-height: 1.85; margin-bottom: 1.2rem; }
+  .about-sidebar { padding: 3.5rem 2.5rem; }
+  .about-sidebar h3 { font-family: var(--serif); font-weight: 500; font-size: 1.05rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--rule); }
+  .role-list { list-style: none; margin-bottom: 2.5rem; }
+  .role-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--cream-dark); font-size: 0.87rem; line-height: 1.5; }
+  .role-list li strong { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; display: block; letter-spacing: 0.04em; }
+  .role-list li span { color: var(--warm-gray); font-family: var(--sans); font-size: 0.7rem; }
 
-  #about .about-main {
-    padding: 3.5rem 4rem;
-    border-right: 1px solid var(--rule);
-  }
-
-  #about .about-main p {
-    font-size: 1.05rem;
-    line-height: 1.85;
-    margin-bottom: 1.5rem;
-  }
-
-  #about .about-main p:first-of-type {
-    font-size: 1.25rem;
-    font-style: italic;
-    color: var(--ink);
-    border-left: 3px solid var(--crimson);
-    padding-left: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  #about .about-sidebar {
-    padding: 3.5rem 3rem;
-  }
-
-  #about .about-sidebar h3 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  #about .role-list {
-    list-style: none;
-    margin-bottom: 2.5rem;
-  }
-
-  #about .role-list li {
-    padding: 0.6rem 0;
-    border-bottom: 1px solid var(--cream-dark);
-    font-size: 0.88rem;
-    line-height: 1.5;
-  }
-
-  #about .role-list li strong {
-    display: block;
-    font-weight: 500;
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-  }
-
-  #about .role-list li span {
-    color: var(--warm-gray);
-    font-family: var(--sans);
-    font-size: 0.72rem;
-  }
-
-  .contact-block {
-    padding: 4rem 4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .contact-block h2 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .contact-block p {
-    font-size: 0.95rem;
-    color: var(--warm-gray);
-    max-width: 50ch;
-    margin-bottom: 1rem;
-  }
-
-  .contact-link {
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
-    color: var(--crimson);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .contact-link::after { content: ' ↗'; }
+  .contact-block { padding: 3.5rem 3.5rem; display: flex; gap: 3rem; align-items: start; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
+  .contact-block h2 { font-family: var(--serif); font-weight: 300; font-size: 1.8rem; margin-bottom: 0.6rem; }
+  .contact-block p { font-size: 0.9rem; color: var(--warm-gray); max-width: 46ch; margin-bottom: 1.2rem; }
+  .contact-link { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.05em; color: var(--crimson); text-decoration: none; display: block; margin-bottom: 0.5rem; }
   .contact-link:hover { text-decoration: underline; }
-
-  .download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--cream-dark);
-    border: 1px solid var(--rule);
-    padding: 0.9rem 1.5rem;
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s;
-    width: fit-content;
-  }
+  .download-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+  .download-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--cream-dark); border: 1px solid var(--rule); padding: 0.75rem 1.3rem; font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink); cursor: pointer; text-decoration: none; transition: background 0.2s; }
   .download-btn:hover { background: var(--rule); }
 
   /* ── FOOTER ── */
-  footer {
-    padding: 2rem 4rem;
-    border-top: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  footer p {
-    font-family: var(--sans);
-    font-size: 0.68rem;
-    color: var(--warm-gray);
-    letter-spacing: 0.06em;
-  }
+  footer { padding: 1.8rem 3.5rem; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-family: var(--sans); font-size: 0.65rem; color: var(--warm-gray); letter-spacing: 0.06em; }
 
   /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .page.active .hero-name,
-  .page.active .hero-statement,
-  .page.active .hero-cta,
-  .page.active .section-title,
-  .page.active .section-sub {
-    animation: fadeUp 0.55s ease both;
-  }
-
-  .page.active .hero-statement { animation-delay: 0.08s; }
-  .page.active .hero-cta { animation-delay: 0.16s; }
-  .page.active .section-sub { animation-delay: 0.1s; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .page.active .hero-name { animation: fadeUp 0.5s ease both; }
+  .page.active .hero-statement { animation: fadeUp 0.5s ease 0.08s both; }
+  .page.active .hero-cta { animation: fadeUp 0.5s ease 0.16s both; }
 </style>
 </head>
 <body>
@@ -635,7 +248,9 @@
   <ul class="nav-links">
     <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
     <li><a onclick="showPage('writing')" id="nav-writing">Writing</a></li>
+    <li><a onclick="showPage('datajournalism')" id="nav-datajournalism">Data</a></li>
     <li><a onclick="showPage('editing')" id="nav-editing">Editing</a></li>
+    <li><a onclick="showPage('book')" id="nav-book">Book</a></li>
     <li><a onclick="showPage('about')" id="nav-about">About</a></li>
   </ul>
 </nav>
@@ -644,7 +259,7 @@
 <section id="home" class="page active">
   <div class="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow">Senior Editor &amp; Writer</p>
+      <p class="eyebrow">Senior Editor &amp; Writer</p>
       <h1 class="hero-name">Peter<br><em>Gratton</em></h1>
       <p class="hero-statement">I cover how economic and technological power reshapes everyday life — through data-driven investigations, narrative features, and analysis that makes the abstract legible for anyone paying attention.</p>
       <div class="hero-cta">
@@ -653,27 +268,27 @@
       </div>
     </div>
     <div class="hero-right">
-      <p class="featured-label">Selected recent work</p>
+      <p class="featured-label">Selected work</p>
       <ul class="featured-list">
         <li onclick="window.open('#','_blank')">
-          <span class="featured-cat">Investigation</span>
+          <span class="featured-cat">Accountability reporting</span>
           <span class="featured-title">Instacart Was Charging Wildly Diverging Prices for Different Shoppers — So I Checked My Costco Orders</span>
         </li>
         <li onclick="window.open('#','_blank')">
-          <span class="featured-cat">Data journalism</span>
+          <span class="featured-cat">Data &amp; research</span>
           <span class="featured-title">A 2003 Study Found Black College Grads Had the Same Job Callback Chances as White Convicted Felons. Has Anything Changed?</span>
         </li>
         <li onclick="window.open('#','_blank')">
-          <span class="featured-cat">Policy &amp; news</span>
+          <span class="featured-cat">News &amp; policy</span>
           <span class="featured-title">Don't Laugh — Here Is How Penguins Waddled Into Trump's Trade War</span>
         </li>
         <li onclick="window.open('#','_blank')">
           <span class="featured-cat">Feature</span>
           <span class="featured-title">'I Had To Get Out' — Black Americans Are Building Wealth by Relocating to Africa</span>
         </li>
-        <li onclick="window.open('#','_blank')">
-          <span class="featured-cat">Accountability</span>
-          <span class="featured-title">The Financial Advisor Industry Still Lacks Diversity</span>
+        <li onclick="window.open('https://www.liberalcurrents.com/the-grift-society/','_blank')">
+          <span class="featured-cat">Essay — Liberal Currents</span>
+          <span class="featured-title">The Grift Society</span>
         </li>
       </ul>
     </div>
@@ -685,156 +300,569 @@
   <div class="section-header">
     <p class="section-eyebrow">Portfolio</p>
     <h2 class="section-title">Writing</h2>
-    <p class="section-sub">Investigations, features, data journalism, and news analysis drawn from 340+ articles at Investopedia.</p>
+    <p class="section-sub">340+ articles at Investopedia, plus essays and criticism across Liberal Currents, the Oxford Literary Review, and the Los Angeles Review of Books.</p>
   </div>
 
-  <div class="writing-grid">
+  <div class="writing-bio">
+    <p>I've been writing about money, power, and the economy for more than two decades — first across financial and general interest publications, then for the past decade as a Senior Editor and staff writer at Investopedia. The work ranges from breaking news and daily market commentary to long-form investigations, data-driven features, and policy analysis. Alongside that, I write essays and criticism for Liberal Currents, the Oxford Literary Review, and the Los Angeles Review of Books — work in a longer register that draws on my background in political philosophy and intellectual history. My PhD training shapes how I approach economic stories: I'm drawn to the structural question behind the news hook, the historical precedent behind the current crisis, the body of research behind the single study everyone is citing. The categories below overlap more than they divide — the best financial journalism has always been about power, not just price.</p>
+  </div>
 
-    <!-- TOP 10 -->
-    <div class="writing-category">
-      <div class="cat-header">
-        <span class="cat-name">Signature Work</span>
-        <span class="cat-count">Top 10 selections</span>
+  <div class="cat-rows">
+
+    <div class="cat-row" onclick="toggleCat('news')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">01</span>
       </div>
-      <div class="articles-list">
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">Instacart Was Charging Wildly Diverging Prices for Different Shoppers, an Investigation Found — So I Checked My Costco Orders</div>
-            <div class="article-desc">Combined a Consumer Reports investigation with first-person data analysis of a year of orders. Rare blend of investigative findings and personal verification — gave readers a template to check their own accounts.</div>
-          </div>
-          <span class="article-badge">Investigation</span>
-        </a>
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">A 2003 Study Found that Black College Grads Had the Same Job Callback Chances as White Convicted Felons — Has Anything Changed?</div>
-            <div class="article-desc">Revisits a landmark study with new meta-analysis of 90+ field experiments, tracing hiring discrimination into AI-driven systems.</div>
-          </div>
-          <span class="article-badge">Data / Research</span>
-        </a>
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">The Financial Advisor Industry Still Lacks Diversity</div>
-            <div class="article-desc">Deeply reported investigation covering decades of industry failures, $200M+ in discrimination lawsuit settlements, and structural barriers. Long-form accountability journalism with receipts.</div>
-          </div>
-          <span class="article-badge">Accountability</span>
-        </a>
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">Don't Laugh — Here Is How Penguins Waddled Into Trump's Trade War</div>
-            <div class="article-desc">Uses an absurdist hook — tariffs on uninhabited penguin islands — to illuminate systemic flaws in origin-sourcing and trade enforcement. Complex policy made accessible and entertaining.</div>
-          </div>
-          <span class="article-badge">News / Policy</span>
-        </a>
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">'I Had To Get Out' — Black Americans Are Building Wealth by Relocating to Africa</div>
-            <div class="article-desc">Interview-rich feature weaving personal narratives (including Kelis) with financial data on cost-of-living arbitrage. Balances emotional push factors with practical financial guidance.</div>
-          </div>
-          <span class="article-badge">Feature</span>
-        </a>
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">60-Year-Olds Brace for Insurance Hikes of Up to $48K: 'I'm Terrified'</div>
-            <div class="article-desc">Centers one woman's story within a massive policy crisis — ACA credit expiration affecting 20M+ people. Human cost of abstract policy debates. Strong character-driven news reporting.</div>
-          </div>
-          <span class="article-badge">News</span>
-        </a>
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">Target Faces Boycott: 200 Days Without DEI, Financial Impact Grows</div>
-            <div class="article-desc">Tracks the concrete financial consequences ($20B in lost shareholder value) of Target's DEI rollback with specificity — stock data, foot traffic, competitor comparisons.</div>
-          </div>
-          <span class="article-badge">Data journalism</span>
-        </a>
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">The Hidden Cost of AI: How Data Centers Are Draining Water Resources and What It Means for Investors</div>
-            <div class="article-desc">Connects AI's explosive growth to water scarcity with striking specifics (training ChatGPT used 185,000 gallons). Bridges environmental reporting with investment analysis.</div>
-          </div>
-          <span class="article-badge">Tech / Climate</span>
-        </a>
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">How 20 Years of Poverty Shaped a Former Monk's Approach to Wealth Management</div>
-            <div class="article-desc">A compelling profile of a Marine-turned-monk-turned-financial-advisor. Narrative feature writing at its best — character illuminating an idea.</div>
-          </div>
-          <span class="article-badge">Profile</span>
-        </a>
-
-        <a class="article-row article-highlight" href="#" target="_blank">
-          <div>
-            <div class="article-row-title">Can Blockchain Solve the Global Retirement Crisis?</div>
-            <div class="article-desc">An ambitious, skeptical deep-dive tracing retirement crisis narratives back to the 1930s, critically examining 30+ proposed solutions. Shows willingness to push back against hype.</div>
-          </div>
-          <span class="article-badge">Explainer</span>
-        </a>
-
+      <div class="cat-row-mid">
+        <span class="cat-row-name">News &amp; Current Events</span>
+        <span class="cat-row-desc">Breaking news, policy reactions, market events — including original reporting on tariff policy, Fed decisions, and corporate accountability stories that generated significant traffic and press pickup.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">52 articles</span>
+        <span class="cat-toggle">View ↓</span>
       </div>
     </div>
 
-    <!-- NEWS -->
-    <div class="writing-category">
-      <div class="cat-header">
-        <span class="cat-name">News &amp; Current Events</span>
-        <span class="cat-count">52 articles</span>
+    <div class="cat-row" onclick="toggleCat('data')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">02</span>
       </div>
-      <div class="articles-list">
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Could Trump's Tariffs Cause a Worldwide Recession?</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Dollar Hits 4-Year Low — How It Could Impact Your Wallet and Financial Plans</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Amazon, UPS and Other Major Companies Are Making Big Job Cuts. Is AI To Blame?</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Goldman Sachs Warns Gold May Reach $5,000 if Federal Reserve's Independence Is Compromised</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Four-Fifths of Credit Card Accounts Could Vanish Under Trump's Rate Cap, Experts Say</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Forget Sports Betting — Americans Found a New $300M Game: The Fed Meeting</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Anthropic CEO Warns of AI's Threat to Jobs: 'Unemployed or Very-Low-Wage Underclass' Looms</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Starbucks Closed Over 450 Stores This Week — Is Your Favorite Location on the List?</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Ray Dalio Warns: Wealth Gaps Fuel Extreme Policies. Are Your Investments at Political Risk?</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">The Mystery of Venezuela's Oil: Why the World's Largest Reserves Are Barely Being Pumped</div></div></a>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Data &amp; Research-Driven</span>
+        <span class="cat-row-desc">Articles built around original data analysis, studies, surveys, and federal datasets — including work with Census microdata, Federal Reserve surveys, and BLS consumer data translated for general audiences.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">71 articles</span>
+        <span class="cat-toggle">View ↓</span>
       </div>
     </div>
 
-    <!-- DATA / RESEARCH -->
-    <div class="writing-category">
-      <div class="cat-header">
-        <span class="cat-name">Data &amp; Research-Driven</span>
-        <span class="cat-count">71 articles</span>
+    <div class="cat-row" onclick="toggleCat('markets')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">03</span>
       </div>
-      <div class="articles-list">
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">How Will Your 401(k) Fare If Trump Tariffs Push Foreign Investors Out of U.S. Stocks?</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Americans Under 35 Are Finally Buying Homes Again, But Many Are Still Locked Out</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Gold, Silver, and Copper Are All Hitting Record Highs — Here's What's Driving the Frenzy</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Billions Lost by Investors as Meme Stock Scams Surge</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">The Dow Broke a Half-Century-Old Record — Here's What It Could Mean for Your Money in 2025</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Americans Face Rising Costs in the 'Annoyance Economy' — Experts Explain the Hidden Expenses</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Social Security Celebrates 90 Years This Month, Yet Trust Fund Faces Potential Collapse Within a Decade</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Zero-Day Options Had Their Best Month in May. But Should You Join the Party?</div></div></a>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Markets &amp; Trading</span>
+        <span class="cat-row-desc">Stock analysis, ETFs, options, futures, commodities, and market commentary — covering both the mechanics of investing and the larger forces shaping markets.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">151 articles</span>
+        <span class="cat-toggle">View ↓</span>
       </div>
     </div>
 
-    <!-- FEATURES / PROFILES -->
-    <div class="writing-category">
-      <div class="cat-header">
-        <span class="cat-name">Features &amp; Profiles</span>
-        <span class="cat-count">Selected pieces</span>
+    <div class="cat-row" onclick="toggleCat('personalfinance')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">04</span>
       </div>
-      <div class="articles-list">
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">How Mexico's "Tequila Lake" Exposes a Market Crisis That Might Affect Your Portfolio</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Carlos Ghosn's Escape From Japan in a Box and How a Whistleblower Brought Him Down</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Larry Ellison's Rise: How He Snagged the Title of World's Richest Person From Elon Musk</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">What Does It Cost to Put on a Beyoncé Show?</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">Surprising Connection Between Nut Farming and California's Fire Risk</div></div></a>
-        <a class="article-row" href="#" target="_blank"><div><div class="article-row-title">How Would a Texas Stock Exchange Compete With NYSE and Nasdaq?</div></div></a>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Personal Finance &amp; Planning</span>
+        <span class="cat-row-desc">Retirement planning, 401(k)s, budgeting, and consumer financial advice — with an emphasis on pieces that use real data to benchmark readers against their peers.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">111 articles</span>
+        <span class="cat-toggle">View ↓</span>
       </div>
     </div>
 
+    <div class="cat-row" onclick="toggleCat('explainers')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">05</span>
+      </div>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Explainers &amp; How-Tos</span>
+        <span class="cat-row-desc">Financial concepts, investment strategies, and economic principles made accessible — from central bank policy to derivatives to the mechanics of a stock split.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">135 articles</span>
+        <span class="cat-toggle">View ↓</span>
+      </div>
+    </div>
+
+    <div class="cat-row" onclick="toggleCat('policy')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">06</span>
+      </div>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Policy &amp; Regulation</span>
+        <span class="cat-row-desc">SEC enforcement, Social Security, tariff policy, legislation — the regulatory architecture that shapes financial markets and everyday financial life.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">45 articles</span>
+        <span class="cat-toggle">View ↓</span>
+      </div>
+    </div>
+
+    <div class="cat-row" onclick="toggleCat('tech')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">07</span>
+      </div>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Tech &amp; Innovation</span>
+        <span class="cat-row-desc">AI, cryptocurrency, blockchain, and fintech — with a skeptic's eye toward hype and a focus on what technology actually means for workers, investors, and markets.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">40 articles</span>
+        <span class="cat-toggle">View ↓</span>
+      </div>
+    </div>
+
+    <div class="cat-row" onclick="toggleCat('career')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">08</span>
+      </div>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Career &amp; Workplace</span>
+        <span class="cat-row-desc">Job market trends, labor economics, workplace culture, and salary data — including original analysis of ADP data on the financial cost of workplace loyalty.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">28 articles</span>
+        <span class="cat-toggle">View ↓</span>
+      </div>
+    </div>
+
+    <div class="cat-row" onclick="toggleCat('travel')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">09</span>
+      </div>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Travel &amp; Lifestyle</span>
+        <span class="cat-row-desc">Retirement destinations, cost-of-living guides, and relocation features — financial data grounding what could otherwise be purely aspirational content.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">17 articles</span>
+        <span class="cat-toggle">View ↓</span>
+      </div>
+    </div>
+
+    <div class="cat-row" onclick="toggleCat('education')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">10</span>
+      </div>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Education</span>
+        <span class="cat-row-desc">The economics of higher education — degree ROI, emerging fields, student outcomes — connecting labor market data to decisions students actually face.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">12 articles</span>
+        <span class="cat-toggle">View ↓</span>
+      </div>
+    </div>
+
+    <div class="cat-row" onclick="toggleCat('essays')">
+      <div class="cat-row-left">
+        <span class="cat-row-num">11</span>
+      </div>
+      <div class="cat-row-mid">
+        <span class="cat-row-name">Essays &amp; Criticism</span>
+        <span class="cat-row-desc">Long-form essays on political economy, ethics, and contemporary power — for Liberal Currents, the Oxford Literary Review supplement, and the Los Angeles Review of Books.</span>
+      </div>
+      <div class="cat-row-right">
+        <span class="cat-row-count">LC · OLR · LARB</span>
+        <span class="cat-toggle">View ↓</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ARTICLE LISTS -->
+
+  <div class="cat-articles" id="articles-news">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">News &amp; Current Events</span>
+      <span class="close-cat" onclick="toggleCat('news')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li class="highlight"><a href="#" target="_blank">60-Year-Olds Brace for Insurance Hikes of Up to $48K: 'I'm Terrified'</a></li>
+      <li class="highlight"><a href="#" target="_blank">Don't Laugh—Here Is How Penguins Waddled Into Trump's Trade War</a></li>
+      <li class="highlight"><a href="#" target="_blank">Target Faces Boycott: 200 Days Without DEI, Financial Impact Grows</a></li>
+      <li class="highlight"><a href="#" target="_blank">Instacart Was Charging Wildly Diverging Prices for Different Shoppers, an Investigation Found—So I Checked My Costco Orders</a></li>
+      <li><a href="#" target="_blank">Could Trump's Tariffs Cause a Worldwide Recession?</a></li>
+      <li><a href="#" target="_blank">Dollar Hits 4-Year Low—How It Could Impact Your Wallet and Financial Plans</a></li>
+      <li><a href="#" target="_blank">Amazon, UPS and Other Major Companies Are Making Big Job Cuts. Is AI To Blame?</a></li>
+      <li><a href="#" target="_blank">Anthropic CEO Warns of AI's Threat to Jobs: 'Unemployed or Very-Low-Wage Underclass' Looms</a></li>
+      <li><a href="#" target="_blank">Berkshire Hathaway's Latest Stock Moves Unveiled: What Investors Need To Know</a></li>
+      <li><a href="#" target="_blank">Bill Gross Cautions Against 'Buying the Dip' Amid Concerns Over Market's Uncertain Future</a></li>
+      <li><a href="#" target="_blank">Billions Lost by Investors as Meme Stock Scams Surge</a></li>
+      <li><a href="#" target="_blank">Buffett Says 'Everything Will Be the Same' at Berkshire—Investors Fear It Won't Be</a></li>
+      <li><a href="#" target="_blank">CEO of ChatGPT's Parent Company: 'I Expect Some Really Bad Stuff To Happen'—Here's What He Means</a></li>
+      <li><a href="#" target="_blank">Forget Sports Betting—Americans Found a New $300M Game: The Fed Meeting</a></li>
+      <li><a href="#" target="_blank">Four-Fifths of Credit Card Accounts Could Vanish Under Trump's Rate Cap, Experts Say</a></li>
+      <li><a href="#" target="_blank">Gold, Silver, and Copper Are All Hitting Record Highs—Here's What's Driving the Frenzy</a></li>
+      <li><a href="#" target="_blank">Goldman Sachs Warns Gold May Reach $5,000 if Federal Reserve's Independence Is Compromised</a></li>
+      <li><a href="#" target="_blank">How Mexico's "Tequila Lake" Exposes a Market Crisis That Might Affect Your Portfolio</a></li>
+      <li><a href="#" target="_blank">How Tariffs on Chinese Goods Could Affect Your Grocery Bill</a></li>
+      <li><a href="#" target="_blank">How Trump's Second Term Could Shape the U.S. Economy</a></li>
+      <li><a href="#" target="_blank">How Will Your 401(k) Fare If Trump Tariffs Push Foreign Investors Out of U.S. Stocks?</a></li>
+      <li><a href="#" target="_blank">Jim Cramer Says 'The Year of Magical Investing' Is Over—Here's What To Do Now</a></li>
+      <li><a href="#" target="_blank">Ray Dalio Warns: Wealth Gaps Fuel Extreme Policies. Are Your Investments at Political Risk?</a></li>
+      <li><a href="#" target="_blank">Social Security and IRS Both Have This Payment Change Starting Next Week</a></li>
+      <li><a href="#" target="_blank">Starbucks Closed Over 450 Stores This Week—Is Your Favorite Location on the List?</a></li>
+      <li><a href="#" target="_blank">Surprising Connection Between Nut Farming and California's Fire Risk</a></li>
+      <li><a href="#" target="_blank">The Buffett Era as CEO Is Over—Here's How Much He Crushed the Market</a></li>
+      <li><a href="#" target="_blank">The Dow Broke a Half-Century-Old Record—Here's What It Could Mean for Your Money in 2025</a></li>
+      <li><a href="#" target="_blank">The Mystery of Venezuela's Oil: Why the World's Largest Reserves Are Barely Being Pumped</a></li>
+      <li><a href="#" target="_blank">Trump Considers Military Action—What's Hidden Beneath Greenland's Ice?</a></li>
+      <li><a href="#" target="_blank">Walmart Made It Into the Exclusive $1 Trillion Club. Here Are the Other Members</a></li>
+      <li><a href="#" target="_blank">What RFK Jr.'s War on Corn Syrup Could Mean for Your Grocery Basket</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-data">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Data &amp; Research-Driven</span>
+      <span class="close-cat" onclick="toggleCat('data')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li class="highlight"><a href="#" target="_blank">A 2003 Study Found that Black College Grads Had the Same Job Callback Chances as White Convicted Felons—Has Anything Changed?</a></li>
+      <li class="highlight"><a href="#" target="_blank">The Financial Advisor Industry Still Lacks Diversity</a></li>
+      <li class="highlight"><a href="#" target="_blank">Homeowners Ages 35-44 Struggle Financially—Here Are the States Where Being House-Rich and Cash-Poor Hits Hardest</a></li>
+      <li><a href="#" target="_blank">ADP Data Reveals How Much Loyalty at Your Job Is Costing You Each Year</a></li>
+      <li><a href="#" target="_blank">Americans Face Rising Costs in the 'Annoyance Economy'—Experts Explain the Hidden Expenses</a></li>
+      <li><a href="#" target="_blank">Americans Under 35 Are Finally Buying Homes Again, But Many Are Still Locked Out</a></li>
+      <li><a href="#" target="_blank">Americans Work 8.4 Hours Daily—Here's How That Compares to the Rest of the World</a></li>
+      <li><a href="#" target="_blank">Are Tax Laws Making Us Stingier? Why Americans Give So Much Less to Charity Now</a></li>
+      <li><a href="#" target="_blank">Are You Saving Enough for Retirement? See How Your Contributions Compare to Others Like You</a></li>
+      <li><a href="#" target="_blank">Average 401(k) Withdrawal Rate for Retirees in 2026 Revealed</a></li>
+      <li><a href="#" target="_blank">Average Home Equity for Retirees in 2025: Surprising Insights Revealed</a></li>
+      <li><a href="#" target="_blank">Average Investment Portfolio Size in Your 30s for 2026: How Do You Compare?</a></li>
+      <li><a href="#" target="_blank">Foreign Buyers' Influence on the US Residential Housing Market</a></li>
+      <li><a href="#" target="_blank">Gen Z Is Doing Something Before Marriage That Most Americans Never Did</a></li>
+      <li><a href="#" target="_blank">How Gen Z's 401(k) Balance Measures Against Other Generations Today</a></li>
+      <li><a href="#" target="_blank">How Much Did People in Their 60s Spend Living in Retirement in 2025?</a></li>
+      <li><a href="#" target="_blank">MAPPED: Here's How Much Elder Caregivers Charge in 2026</a></li>
+      <li><a href="#" target="_blank">Retiring With $1 Million Remains Uncommon—How Many People Reach That Milestone</a></li>
+      <li><a href="#" target="_blank">Take That Boomer! Millennials Outpace Older Generations on This Retirement Front</a></li>
+      <li><a href="#" target="_blank">The Financial Burden of Parents: Understanding Why 33% of Us Feel Resentment</a></li>
+      <li><a href="#" target="_blank">The Menopause Penalty for Women</a></li>
+      <li><a href="#" target="_blank">The NEET Crisis: Why Millions of Gen Zers Are Neither Working Nor Studying</a></li>
+      <li><a href="#" target="_blank">Typical 401(k) Contribution Rates Revealed—and How You Compare to Other Savers</a></li>
+      <li><a href="#" target="_blank">Typical Mortgage Debt in 2026: Are You Ahead or Behind?</a></li>
+      <li><a href="#" target="_blank">Where Are Renters 35-44 Feeling the Most Financial Strain? Census Data Highlights Key States</a></li>
+      <li><a href="#" target="_blank">Why Wealthy Americans Are Dying Earlier Than Wealthy Europeans</a></li>
+      <li><a href="#" target="_blank">77% of Older Americans Say the 2026 Social Security COLA Is Not Enough</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-markets">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Markets &amp; Trading</span>
+      <span class="close-cat" onclick="toggleCat('markets')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li><a href="#" target="_blank">15 Funds That Have Dragged Down Portfolios for Over a Decade</a></li>
+      <li><a href="#" target="_blank">Can Bill Ackman Make Howard Hughes Holdings Into the Next Berkshire Hathaway?</a></li>
+      <li><a href="#" target="_blank">Dollar-Cost Averaging or Timing the Market: Which Works Better?</a></li>
+      <li><a href="#" target="_blank">Do Tariffs Change the Investment Case for International Diversification?</a></li>
+      <li><a href="#" target="_blank">Has Gold Been a Good Investment Over the Long Term?</a></li>
+      <li><a href="#" target="_blank">Here's the NFL Team Your Stock Portfolio Hopes Will Win the Super Bowl</a></li>
+      <li><a href="#" target="_blank">How AI Trading Bots Could Be Secretly Colluding, Raising Your Investment Costs</a></li>
+      <li><a href="#" target="_blank">How Buffett's Billion-Dollar Investment Offers Takeaways to Build Your Wealth</a></li>
+      <li><a href="#" target="_blank">How Long-Term Shareholders Gain a Market Edge: Insights From a New Study</a></li>
+      <li><a href="#" target="_blank">How More Accessible AI Could Revolutionize Wall Street Trading</a></li>
+      <li><a href="#" target="_blank">How To Invest in Nuclear Energy—What You Need to Know</a></li>
+      <li><a href="#" target="_blank">How You Can Beat Wall Street's 'Smart Money' With One Simple Trick</a></li>
+      <li><a href="#" target="_blank">Impact Investing: Making a Difference and a Profit</a></li>
+      <li><a href="#" target="_blank">Is Now the Right Time to Invest in Stocks or Should You Wait for the Fed's Rate Cut Decision?</a></li>
+      <li><a href="#" target="_blank">Robinhood's Token Versions of Stocks Could Change How You Buy Stocks Forever</a></li>
+      <li><a href="#" target="_blank">Should You Worry When Insiders Sell Their Shares?</a></li>
+      <li><a href="#" target="_blank">The 'Costanza Strategy': Why Bad Market Timing Matters Less Than You Think</a></li>
+      <li><a href="#" target="_blank">The Investment Scorecard for 2025: Top Performers and Biggest Decliners</a></li>
+      <li><a href="#" target="_blank">The Secret to Warren Buffett's Longevity in Investing: 5 Habits To Follow</a></li>
+      <li><a href="#" target="_blank">Warren Buffett's Worst Deal Ever Cost $17.87B—Here's What You Can Learn From It</a></li>
+      <li><a href="#" target="_blank">What Is DeepSeek and How Should It Change the Way You Invest in AI?</a></li>
+      <li><a href="#" target="_blank">What Is the Quantum Revolution? How To Invest in It</a></li>
+      <li><a href="#" target="_blank">What Your Attachment to Nvidia and Apple Stocks Could Reveal About Your Investing Psychology</a></li>
+      <li><a href="#" target="_blank">Why Tesla Retail Investors Keep "Undying Faith" When Vehicle Sales and Stock Sink</a></li>
+      <li><a href="#" target="_blank">Your Money, Their Votes: What You Should Know About How Funds Should Vote Your Shares</a></li>
+      <li><a href="#" target="_blank">Zero-Day Options Had Their Best Month in May. But, Should You Join the Party?</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-personalfinance">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Personal Finance &amp; Planning</span>
+      <span class="close-cat" onclick="toggleCat('personalfinance')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li><a href="#" target="_blank">Can Blockchain Solve the Global Retirement Crisis?</a></li>
+      <li><a href="#" target="_blank">Do You Need a Relationship Financial Exit Strategy?</a></li>
+      <li><a href="#" target="_blank">How Often Should You Review Your 401(k) To Maximize Returns?</a></li>
+      <li><a href="#" target="_blank">How Tax-Loss Harvesting Works for Retail Investors</a></li>
+      <li><a href="#" target="_blank">How To Avoid Emotional Investing</a></li>
+      <li><a href="#" target="_blank">How To Create Your Retirement Paycheck</a></li>
+      <li><a href="#" target="_blank">I'm 38 With $16K in Credit Card Debt—Should I Dip Into My $25K 401(k) to Pay It Off?</a></li>
+      <li><a href="#" target="_blank">I'm a Finance Editor, and This Amex Platinum Fee Hike Has Me Considering Canceling</a></li>
+      <li><a href="#" target="_blank">Investing in Birkin Bags for Retirement Surprises a Growing Number of Americans Today</a></li>
+      <li><a href="#" target="_blank">Is Going Into Debt Worth It Just To Save 20% on Prime Day?</a></li>
+      <li><a href="#" target="_blank">Is It Bad To Keep Too Much in Your Checking Account?</a></li>
+      <li><a href="#" target="_blank">Kevin O'Leary Says 'If You Don't Have Money, You Don't Have a Marriage'</a></li>
+      <li><a href="#" target="_blank">Millions Have Unclaimed Savings—Are You One of Them?</a></li>
+      <li><a href="#" target="_blank">Retirement Crisis: Why Most Americans Feel They'll Never Retire</a></li>
+      <li><a href="#" target="_blank">The Financial Challenges of ADHD—And How To Overcome Them</a></li>
+      <li><a href="#" target="_blank">The Hidden Costs of Buy Now, Pay Later</a></li>
+      <li><a href="#" target="_blank">The Hidden Retirement Cost that Could Lead to Financial Ruin</a></li>
+      <li><a href="#" target="_blank">The Shocking Truth About Health Care Savings for Retirement</a></li>
+      <li><a href="#" target="_blank">Will Taylor Swift and Travis Kelce Get a Prenup? Probably</a></li>
+      <li><a href="#" target="_blank">Why Your Investment Fund Will Never Outpace Your Credit Card Interest Payments</a></li>
+      <li><a href="#" target="_blank">Why Your Social Security Raise Might Not Be What You Expect</a></li>
+      <li><a href="#" target="_blank">25 Best Passive Income Ideas to Make Money in 2025</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-explainers">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Explainers &amp; How-Tos</span>
+      <span class="close-cat" onclick="toggleCat('explainers')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li><a href="#" target="_blank">Are Trade Deficits Inherently Bad?</a></li>
+      <li><a href="#" target="_blank">Bond Vigilantes: Definition, Examples, What They Do, and Why</a></li>
+      <li><a href="#" target="_blank">Financialization: Definition, Examples, Consequences, and Criticisms</a></li>
+      <li><a href="#" target="_blank">Hong Kong vs. Mainland China: What's the Difference?</a></li>
+      <li><a href="#" target="_blank">How Are Options Priced? A Guide to Models and Market Influences</a></li>
+      <li><a href="#" target="_blank">How Blockchain Boosters Say It Can Protect the Global Economy</a></li>
+      <li><a href="#" target="_blank">Positive vs. Normative Economics: What's the Difference?</a></li>
+      <li><a href="#" target="_blank">Principal-Agent Relationship: What It Is, How It Works, and New Developments</a></li>
+      <li><a href="#" target="_blank">Skip Cable News—This Simple Search Reveals What's Really Happening to the Economy</a></li>
+      <li><a href="#" target="_blank">Understanding Foreign Investment: Types and How It Works</a></li>
+      <li><a href="#" target="_blank">Unraveling the 2008 Stock Market Crash: Causes and Aftermath</a></li>
+      <li><a href="#" target="_blank">What Is a Bloomberg Terminal? Features, Costs &amp; Competitors</a></li>
+      <li><a href="#" target="_blank">What Is the Relationship Between Inflation and Interest Rates?</a></li>
+      <li><a href="#" target="_blank">What Is the Stock Market and How Does It Work?</a></li>
+      <li><a href="#" target="_blank">When Experts Say 'The Stock Market Is Not the Economy,' What Do They Mean?</a></li>
+      <li><a href="#" target="_blank">Why Has Gold Always Been Valuable?</a></li>
+      <li><a href="#" target="_blank">Why 3x ETFs Are Riskier Than You Might Think</a></li>
+      <li><a href="#" target="_blank">Porter's Five Forces Explained and How to Use the Model</a></li>
+      <li><a href="#" target="_blank">Basel III: What It Is, Capital Requirements, and Implementation</a></li>
+      <li><a href="#" target="_blank">Inflation's Impact on Exchange Rates: Understanding the Dynamics</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-policy">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Policy &amp; Regulation</span>
+      <span class="close-cat" onclick="toggleCat('policy')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li><a href="#" target="_blank">5 Ways the One Big Beautiful Bill Act Is Transforming Parenting in 2025</a></li>
+      <li><a href="#" target="_blank">6 Things Financial Advisors Need To Know About the One Big Beautiful Bill Act</a></li>
+      <li><a href="#" target="_blank">Could Trading Like a Member of Congress Be Your Next Big Investment Strategy?</a></li>
+      <li><a href="#" target="_blank">New Auto-IRA Program: How Residents in DE, ME, NJ, VT, and NV Can Enhance Their Retirement Savings</a></li>
+      <li><a href="#" target="_blank">SEC Crypto Regulations: What Financial Advisors Need to Know</a></li>
+      <li><a href="#" target="_blank">SEC Division of Enforcement: What It Is, How It Works</a></li>
+      <li><a href="#" target="_blank">Securities and Exchange Commission (SEC): What It Is and How It Works</a></li>
+      <li><a href="#" target="_blank">Social Security Celebrates 90 Years This Month, Yet Trust Fund Faces Potential Collapse Within a Decade</a></li>
+      <li><a href="#" target="_blank">Understanding the SEC</a></li>
+      <li><a href="#" target="_blank">What Happens to the Fines Collected by the SEC?</a></li>
+      <li><a href="#" target="_blank">What Is the Social Security Death Master List? What's It Like To Find Yourself on It?</a></li>
+      <li><a href="#" target="_blank">What Happens to Your Personal Data When a Company Folds?</a></li>
+      <li><a href="#" target="_blank">12 States With Teens' Social Media Regulation—Is Yours One of Them?</a></li>
+      <li><a href="#" target="_blank">Regulation Best Interest (BI): Definition, Broker Obligations</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-tech">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Tech &amp; Innovation</span>
+      <span class="close-cat" onclick="toggleCat('tech')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li class="highlight"><a href="#" target="_blank">The Hidden Cost of AI: How Data Centers Are Draining Water Resources and What It Means for Investors</a></li>
+      <li><a href="#" target="_blank">Can Blockchain Solve the Global Retirement Crisis?</a></li>
+      <li><a href="#" target="_blank">Crypto ETFs Are Getting Cheaper—Here's What It Means for Your 401(k)</a></li>
+      <li><a href="#" target="_blank">Does Ethereum Have More Upside Potential Than Bitcoin?</a></li>
+      <li><a href="#" target="_blank">How AI Trading Bots Could Be Secretly Colluding, Raising Your Investment Costs</a></li>
+      <li><a href="#" target="_blank">How More Accessible AI Could Revolutionize Wall Street Trading</a></li>
+      <li><a href="#" target="_blank">How Technology Is Changing Financial Advice</a></li>
+      <li><a href="#" target="_blank">Robinhood's Token Versions of Stocks Could Change How You Buy Stocks Forever</a></li>
+      <li><a href="#" target="_blank">Stablecoins: Understanding the Hidden Run Risk and Financial Stability Challenges</a></li>
+      <li><a href="#" target="_blank">The Future of Fintech</a></li>
+      <li><a href="#" target="_blank">These 34 Jobs AI Will Never Take Over and Their Salary Insights</a></li>
+      <li><a href="#" target="_blank">What Are "Fabless" Chipmakers?</a></li>
+      <li><a href="#" target="_blank">What Are the World Bank's Blockchain-Based Bonds?</a></li>
+      <li><a href="#" target="_blank">What Does Strategy (Formerly MicroStrategy) Do and Why Does It Hold So Much Bitcoin?</a></li>
+      <li><a href="#" target="_blank">What Is DeepSeek and How Should It Change the Way You Invest in AI?</a></li>
+      <li><a href="#" target="_blank">What Is the Quantum Revolution? How To Invest in It</a></li>
+      <li><a href="#" target="_blank">Who Are the Bitcoin Twins and How Much Influence Do They Have on Crypto?</a></li>
+      <li><a href="#" target="_blank">Why Facebook Leads the Social Media Landscape</a></li>
+      <li><a href="#" target="_blank">10 Ways Cybercrime Impacts Business</a></li>
+      <li><a href="#" target="_blank">Is Crypto Bad for the Deficit? The Hidden Costs You Could End Up Paying</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-career">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Career &amp; Workplace</span>
+      <span class="close-cat" onclick="toggleCat('career')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li class="highlight"><a href="#" target="_blank">ADP Data Reveals How Much Loyalty at Your Job Is Costing You Each Year</a></li>
+      <li class="highlight"><a href="#" target="_blank">A 2003 Study Found that Black College Grads Had the Same Job Callback Chances as White Convicted Felons—Has Anything Changed?</a></li>
+      <li><a href="#" target="_blank">Car Wash Beats Google as Top Workplace in America—Here's the Full List of Winners</a></li>
+      <li><a href="#" target="_blank">How Delayed Recognition Is Eroding Workplace Loyalty</a></li>
+      <li><a href="#" target="_blank">Research Reveals the Surprising Impact of Your First Job on Career Success More Than Your Degree</a></li>
+      <li><a href="#" target="_blank">The Menopause Penalty for Women</a></li>
+      <li><a href="#" target="_blank">The NEET Crisis: Why Millions of Gen Zers Are Neither Working Nor Studying</a></li>
+      <li><a href="#" target="_blank">Americans Work 8.4 Hours Daily—Here's How That Compares to the Rest of the World</a></li>
+      <li><a href="#" target="_blank">Amazon, UPS and Other Major Companies Are Making Big Job Cuts. Is AI To Blame?</a></li>
+      <li><a href="#" target="_blank">Anthropic CEO Warns of AI's Threat to Jobs: 'Unemployed or Very-Low-Wage Underclass' Looms</a></li>
+      <li><a href="#" target="_blank">Nvidia CEO Jensen Huang Says This Job Will Win The AI Race, But It's Not a Job in Tech</a></li>
+      <li><a href="#" target="_blank">These 34 Jobs AI Will Never Take Over and Their Salary Insights</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-travel">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Travel &amp; Lifestyle</span>
+      <span class="close-cat" onclick="toggleCat('travel')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li class="highlight"><a href="#" target="_blank">'I Had To Get Out'—Black Americans Are Building Wealth by Relocating to Africa</a></li>
+      <li><a href="#" target="_blank">4 Best African Countries for Comfortable and Affordable Retirement Living</a></li>
+      <li><a href="#" target="_blank">4 Best Towns for Retired Birdwatchers</a></li>
+      <li><a href="#" target="_blank">4 Southern Cities Perfect for Retirement: Enjoy Hospitality and Low Living Costs</a></li>
+      <li><a href="#" target="_blank">5 Artsy Towns for Retirees With Creative Vibes and Affordable Costs</a></li>
+      <li><a href="#" target="_blank">5 Latin American Countries Where You Can Retire Comfortably on $2,000 a Month</a></li>
+      <li><a href="#" target="_blank">5 Towns Rich in History That Offer Budget-Friendly Homes for Buyers</a></li>
+      <li><a href="#" target="_blank">6 Top Affordable Tropical Islands for the Perfect Retirement</a></li>
+      <li><a href="#" target="_blank">7 Stunning Mediterranean Spots for a Stylish Retirement Without Breaking the Bank</a></li>
+      <li><a href="#" target="_blank">Could the World's Healthiest Country Be the Best Retirement Spot for You?</a></li>
+      <li><a href="#" target="_blank">Italy and Spain Tightened the Rules—Where American Retirees Can Still Get a Second Passport</a></li>
+      <li><a href="#" target="_blank">Living on a Cruise Ship in Retirement: A Brilliant Hack or a Costly Mistake?</a></li>
+      <li><a href="#" target="_blank">Luxury Travelers Prefer Spending Thousands on Authentic Nonna's Kitchen Over Lavish Hotel Suites</a></li>
+      <li><a href="#" target="_blank">TV's Most Iconic Filming Locations You Can Actually Retire To</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-education">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Education</span>
+      <span class="close-cat" onclick="toggleCat('education')">Close ↑</span>
+    </div>
+    <ul class="article-list">
+      <li><a href="#" target="_blank">Best College Degrees for High-Paying Jobs in Fintech Explained</a></li>
+      <li><a href="#" target="_blank">College Degrees Leading to the Highest-Paying AI Careers in 2026</a></li>
+      <li><a href="#" target="_blank">Discover the 10 College Majors with the Best Salary Potential After Graduation</a></li>
+      <li><a href="#" target="_blank">Education vs. Stocks: Which Yields Better Returns?</a></li>
+      <li><a href="#" target="_blank">More Students Are Choosing Double Majors to Boost Job Prospects—But Is It Truly Beneficial?</a></li>
+      <li><a href="#" target="_blank">The NEET Crisis: Why Millions of Gen Zers Are Neither Working Nor Studying</a></li>
+      <li><a href="#" target="_blank">Top AI Grad Programs to Launch Your Career in Artificial Intelligence</a></li>
+      <li><a href="#" target="_blank">Top Health Care Tech Degrees for High Salaries and Long-Term Job Security</a></li>
+      <li><a href="#" target="_blank">Top Online Courses To Secure a Job Quickly And Boost Your Career</a></li>
+      <li><a href="#" target="_blank">Want a High-Paying Job in Quantum Computing? These Degrees Can Get You There</a></li>
+      <li><a href="#" target="_blank">Research Reveals the Surprising Impact of Your First Job on Career Success More Than Your Degree</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-articles" id="articles-essays">
+    <div class="cat-articles-header">
+      <span class="cat-articles-name">Essays &amp; Criticism</span>
+      <span class="close-cat" onclick="toggleCat('essays')">Close ↑</span>
+    </div>
+    <ul class="essay-list">
+      <li class="essay-item">
+        <p class="essay-outlet">Liberal Currents</p>
+        <p class="essay-title"><a href="https://www.liberalcurrents.com/the-grift-society/" target="_blank">The Grift Society</a></p>
+      </li>
+      <li class="essay-item">
+        <p class="essay-outlet">Liberal Currents</p>
+        <p class="essay-title"><a href="https://www.liberalcurrents.com/against-strategy/" target="_blank">Against Strategy: The Moral Stands We Need Today</a></p>
+      </li>
+      <li class="essay-item">
+        <p class="essay-outlet">Liberal Currents</p>
+        <p class="essay-title"><a href="https://www.liberalcurrents.com/why-liberals-must-confront-carl-schmitt-and-the-logic-of-trumpism/" target="_blank">Why Liberals Must Confront Carl Schmitt and the Logic of Trumpism</a></p>
+      </li>
+      <li class="essay-item">
+        <p class="essay-outlet">Liberal Currents</p>
+        <p class="essay-title"><a href="https://www.liberalcurrents.com/the-banality-of-complicity-arendts-guide-to-moral-resistance-in-the-age-of-trump/" target="_blank">The Banality of Complicity: Arendt's Guide to Moral Resistance in the Age of Trump</a></p>
+      </li>
+      <li class="essay-item">
+        <p class="essay-outlet">Oxford Literary Review Supplement</p>
+        <p class="essay-title"><a href="https://olrsupplement.com/2025/12/08/a-hell-without-end-neoliberalism-and-the-grift-society/" target="_blank">A Hell Without End: Neoliberalism and the Grift Society</a></p>
+      </li>
+      <li class="essay-item">
+        <p class="essay-outlet">Los Angeles Review of Books</p>
+        <p class="essay-title"><a href="https://lareviewofbooks.org/contributor/peter-gratton" target="_blank">Contributor page — reviews and essays</a></p>
+      </li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- ══════════ DATA JOURNALISM ══════════ -->
+<section id="datajournalism" class="page">
+  <div class="section-header">
+    <p class="section-eyebrow">Quantitative reporting</p>
+    <h2 class="section-title">Data Journalism</h2>
+    <p class="section-sub">Working directly with federal microdata to produce original findings — not just citing other outlets' analysis, but generating it.</p>
+  </div>
+
+  <div class="dj-body">
+    <div class="dj-main">
+      <p>Most financial journalism uses data secondhand — citing a Fed report, quoting a think tank's findings, linking to someone else's chart. A different approach starts from the source material itself: pulling raw microdata, applying appropriate weights and methodology, and generating findings that haven't been published elsewhere.</p>
+
+      <p>That means working directly with the Census Bureau's American Community Survey Public Use Microdata Sample (ACS PUMS), the Federal Reserve's Survey of Consumer Finances (SCF), the Bureau of Labor Statistics Consumer Expenditure Survey, and ADP's national employment datasets. Each requires different handling — the SCF's five-imputation structure demands Rubin's rules for correct standard errors; the PUMS requires person and household weights plus replicate weights for variance estimation. The output, when done correctly, is findings you can defend to a statistician and explain to anyone.</p>
+
+      <p>Over a decade at Investopedia, this work produced the framework for a comparison story franchise that benchmarks readers' financial situations against demographically similar peers — a content architecture built entirely on original data analysis rather than recycled findings. The "house-rich, cash-poor" analysis, the generational 401(k) benchmarks, the state-level housing burden maps — these start from raw federal data files, not from other publications.</p>
+
+      <p>Alongside this quantitative work sits a parallel practice of academic research translation: reading primary studies, evaluating methodology, and making findings legible for general audiences without losing their substance. The 2003 hiring discrimination piece, for instance, synthesized a meta-analysis of 90+ field experiments spanning two decades — the work was not finding a study and summarizing it, but evaluating a body of evidence and explaining what it collectively shows.</p>
+
+      <p>The data visualization side — 1,500+ original Datawrapper charts produced at Investopedia — is less about technical complexity than about editorial judgment: which chart type serves the story, how axes should be framed, when a table beats a graphic. The volume reflects sustained daily practice; the craft is in the decisions that make numbers intelligible rather than merely present.</p>
+    </div>
+
+    <div class="dj-sidebar">
+      <h3>Primary data sources</h3>
+      <ul class="source-list">
+        <li><span class="source-name">ACS PUMS</span><span class="source-desc">Census Bureau microdata — housing, income, demographics by geography</span></li>
+        <li><span class="source-name">Survey of Consumer Finances</span><span class="source-desc">Federal Reserve — wealth, assets, debt, retirement savings</span></li>
+        <li><span class="source-name">BLS Consumer Expenditure Survey</span><span class="source-desc">Spending by category, age, income bracket</span></li>
+        <li><span class="source-name">ADP National Employment Report</span><span class="source-desc">Private-sector employment and wage data</span></li>
+        <li><span class="source-name">BLS Current Population Survey</span><span class="source-desc">Labor force, occupation, wage distributions</span></li>
+        <li><span class="source-name">Experian consumer debt data</span><span class="source-desc">Credit, mortgage, auto loan by generation</span></li>
+        <li><span class="source-name">Fidelity retirement data</span><span class="source-desc">401(k) and IRA balances by age and generation</span></li>
+        <li><span class="source-name">S&P Case-Shiller / FHFA</span><span class="source-desc">Home price indices and housing market data</span></li>
+      </ul>
+
+      <h3>Methods</h3>
+      <ul class="source-list">
+        <li><span class="source-name">Microdata cross-tabulation</span><span class="source-desc">Custom breakdowns not available in published summary tables</span></li>
+        <li><span class="source-name">Survey-weighted analysis</span><span class="source-desc">Correct handling of complex survey designs and replicate weights</span></li>
+        <li><span class="source-name">Multiple imputation (SCF)</span><span class="source-desc">Rubin's rules applied across five SCF implicates</span></li>
+        <li><span class="source-name">Datawrapper visualization</span><span class="source-desc">1,500+ original charts across chart types and topics</span></li>
+        <li><span class="source-name">Academic literature review</span><span class="source-desc">Meta-analysis evaluation and primary study translation</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="dj-examples">
+    <h3>Representative work</h3>
+    <div class="viz-grid">
+      <div class="viz-card">
+        <p class="viz-label">Housing / Census</p>
+        <p class="viz-title">House-Rich, Cash-Poor: homeowner equity vs. liquid assets by state and age cohort (2024 ACS PUMS)</p>
+      </div>
+      <div class="viz-card">
+        <p class="viz-label">Wealth inequality / Fed SCF</p>
+        <p class="viz-title">Net worth and retirement savings distributions by age bracket, race, and education level</p>
+      </div>
+      <div class="viz-card">
+        <p class="viz-label">Labor markets</p>
+        <p class="viz-title">Occupational dissimilarity index: AI's impact on job composition vs. prior technology eras (Budget Lab / BLS CPS)</p>
+      </div>
+      <div class="viz-card">
+        <p class="viz-label">Accountability reporting</p>
+        <p class="viz-title">Financial advisor industry diversity: $200M+ in discrimination settlements mapped against industry workforce data</p>
+      </div>
+      <div class="viz-card">
+        <p class="viz-label">Consumer spending / BLS</p>
+        <p class="viz-title">Spending by category across age cohorts: building a comparison franchise from the Consumer Expenditure Survey</p>
+      </div>
+      <div class="viz-card">
+        <p class="viz-label">Markets</p>
+        <p class="viz-title">Cross-asset YTD returns: equities, commodities, currencies, crypto — produced at daily publication cadence</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -843,60 +871,173 @@
   <div class="section-header">
     <p class="section-eyebrow">Editorial leadership</p>
     <h2 class="section-title">Editing &amp; Strategy</h2>
-    <p class="section-sub">A decade of building editorial teams, developing data-driven content strategy, and leading platforms through the transition beyond traditional SEO.</p>
+    <p class="section-sub">A decade directing the editorial work of a major personal finance publication — with a particular focus on the transition to post-search content strategy, data journalism, and original reporting.</p>
   </div>
 
-  <div class="editing-body">
+  <div class="editing-top">
     <div class="editing-col">
       <h3>Investopedia — Senior Editor</h3>
       <div class="stat-row">
-        <div class="stat"><span class="stat-number">10</span><span class="stat-label">Direct reports</span></div>
-        <div class="stat"><span class="stat-number">15</span><span class="stat-label">Articles edited weekly</span></div>
+        <div class="stat"><span class="stat-number">10</span><span class="stat-label">Editorial team</span></div>
+        <div class="stat"><span class="stat-number">15+</span><span class="stat-label">Articles edited weekly</span></div>
         <div class="stat"><span class="stat-number">1,500+</span><span class="stat-label">Data visualizations</span></div>
+        <div class="stat"><span class="stat-number">340+</span><span class="stat-label">Bylined articles</span></div>
       </div>
-      <p>Led a ten-person editorial team producing financial news, analysis, and explainers for one of the web's largest personal finance destinations. Managed editorial calendar, contributor development, and quality standards across rapidly evolving coverage areas including markets, policy, technology, and inequality.</p>
-      <p>Wrote 3–5 original pieces weekly alongside editing responsibilities — a workload requiring both managerial range and sustained writerly output.</p>
+      <p>Directed the day-to-day editorial workflow for a ten-person team — assigning stories, editing copy, running daily standups, coordinating production. The role combined substantive editorial oversight with sustained original output: three to five bylined pieces per week alongside editing responsibilities, a workload requiring range across financial news, data journalism, investigations, and explainers simultaneously.</p>
+      <p>The unusual combination of editing volume and writing output meant developing systems to maintain quality at scale: workflow tools, style frameworks, performance tracking, and contributor development processes that didn't exist when the role began.</p>
     </div>
-
     <div class="editing-col">
       <h3>Areas of Expertise</h3>
       <ul class="expertise-list">
-        <li><strong>Post-SEO platform strategy.</strong> Member of Investopedia's Google Discover optimization taskforce; developed editorial frameworks for content that performs on discovery and social platforms rather than search alone.</li>
-        <li><strong>Data journalism.</strong> Created 1,500+ original Datawrapper visualizations covering markets, economic data, and demographic research. Fluent in ACS PUMS, SCF, BLS Consumer Expenditure Survey, and ADP datasets.</li>
-        <li><strong>Editorial voice development.</strong> Built style guides and workflow tools to help contributors move from keyword-driven to reader-driven writing.</li>
-        <li><strong>Investigative reporting.</strong> Led original investigations including Instacart's dynamic pricing and Starbucks store closure patterns — projects that generated significant audience and press attention.</li>
-        <li><strong>Economic and policy translation.</strong> Deep expertise making Federal Reserve decisions, tariff policy, labor market shifts, and financial regulation legible for general audiences without condescension.</li>
+        <li><strong>Post-SEO platform strategy.</strong> Member of Investopedia's Google Discover optimization taskforce — developed editorial frameworks, headline testing protocols, and content architecture for discovery and social distribution rather than keyword search. Has operated at the leading edge of what post-search publishing looks like in practice.</li>
+        <li><strong>Original data journalism.</strong> Built a comparison story franchise from scratch using federal microdata — developed the topic matrix, sourcing methodology, and visualization standards that became a repeatable editorial template.</li>
+        <li><strong>Investigative and accountability reporting.</strong> Led original investigations including Instacart's dynamic pricing practices and patterns in financial advisor industry diversity failures — projects requiring data analysis, source development, and editorial judgment about scope and framing.</li>
+        <li><strong>Academic research translation.</strong> Deep experience evaluating primary studies, academic meta-analyses, and peer-reviewed research for editorial use — can read methodology critically, not just headline findings.</li>
+        <li><strong>Editorial systems building.</strong> Created unified writing workflow tools, competitor content analysis frameworks, economic data release calendars, and internal style resources that outlast any single article cycle.</li>
+        <li><strong>Economic and policy translation.</strong> Sustained expertise making Federal Reserve decisions, tariff policy, labor market shifts, and regulatory changes legible for general audiences — at the level of explanation, not just summary.</li>
       </ul>
     </div>
   </div>
 
-  <div class="editing-full">
-    <h3>Data Visualization — Selected Work</h3>
-    <div class="dataviz-showcase">
-      <div class="dataviz-card">
-        <div class="dataviz-card-label">Labor markets</div>
-        <div class="dataviz-card-title">Occupational dissimilarity index — AI vs. prior technology eras (Budget Lab / BLS)</div>
+  <div class="editing-bottom">
+    <h3>Editorial capabilities</h3>
+    <p class="intro">What the head of news said about this work: a rare ability to operate across every register the job demands — breaking news, long-form investigation, data analysis, academic translation, and strategic planning — simultaneously.</p>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <p class="cap-title">Breaking news editing</p>
+        <p class="cap-desc">Daily news cycle — policy reactions, market events, Fed decisions — with appropriate urgency and accuracy</p>
       </div>
-      <div class="dataviz-card">
-        <div class="dataviz-card-label">Housing</div>
-        <div class="dataviz-card-title">House-rich, cash-poor: homeowner equity vs. liquid assets by age cohort (ACS PUMS 2024)</div>
+      <div class="cap-card">
+        <p class="cap-title">Long-form development</p>
+        <p class="cap-desc">Investigations and features from conception through publication, including source development and structural editing</p>
       </div>
-      <div class="dataviz-card">
-        <div class="dataviz-card-label">Wealth inequality</div>
-        <div class="dataviz-card-title">Net worth distributions across racial and age groups (Survey of Consumer Finances)</div>
+      <div class="cap-card">
+        <p class="cap-title">Data story architecture</p>
+        <p class="cap-desc">Identifying the story in a dataset, building the analysis, and commissioning or writing the piece around findings</p>
       </div>
-      <div class="dataviz-card">
-        <div class="dataviz-card-label">Markets</div>
-        <div class="dataviz-card-title">Cross-asset 2025 YTD returns: equities, commodities, currencies, crypto</div>
+      <div class="cap-card">
+        <p class="cap-title">Platform strategy</p>
+        <p class="cap-desc">Google Discover, Apple News, and social distribution — understanding how platform mechanics shape editorial decisions</p>
       </div>
-      <div class="dataviz-card">
-        <div class="dataviz-card-label">Policy</div>
-        <div class="dataviz-card-title">ACA premium credit expiration impact by age and income band</div>
+      <div class="cap-card">
+        <p class="cap-title">Contributor development</p>
+        <p class="cap-desc">Working with writers at different levels to develop voice, analytical instincts, and structural clarity</p>
       </div>
-      <div class="dataviz-card">
-        <div class="dataviz-card-label">Corporate accountability</div>
-        <div class="dataviz-card-title">Target shareholder value vs. DEI rollback timeline, with foot traffic overlay</div>
+      <div class="cap-card">
+        <p class="cap-title">Franchise building</p>
+        <p class="cap-desc">Identifying repeatable content formats with sustained audience value — built the comparison story franchise at Investopedia from the ground up</p>
       </div>
+      <div class="cap-card">
+        <p class="cap-title">Original writing output</p>
+        <p class="cap-desc">3–5 bylined pieces per week alongside editing responsibilities — a rate that most editorial managers don't maintain</p>
+      </div>
+      <div class="cap-card">
+        <p class="cap-title">Story development</p>
+        <p class="cap-desc">Pitching and developing stories beyond the immediate news cycle — connecting academic research, data signals, and narrative angles</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BOOK ══════════ -->
+<section id="book" class="page">
+  <div class="section-header">
+    <p class="section-eyebrow">Work in progress</p>
+    <h2 class="section-title"><em>Grift Society</em></h2>
+    <p class="section-sub">How speculation and confidence became the organizing principles of contemporary American capitalism.</p>
+  </div>
+
+  <div class="book-body">
+    <div class="book-main">
+      <p class="lede">Something changed in American capitalism in the last four decades that isn't fully captured by the standard accounts of inequality, financialization, or the rise of the precariat. The change is this: the confidence game moved to the center of economic life.</p>
+
+      <p><em>Grift Society</em> argues that the United States has undergone a structural transformation in which speculation, hype, and extractive financial products have ceased to be aberrations of the market and have become its characteristic features. The 401(k) replaced the pension and made every worker a retail investor exposed to market risk. Robinhood gamified trading for a generation raised on social media feedback loops. Sports betting was legalized and scaled nationally with little public deliberation. Prediction markets — once peripheral — now set prices on elections and policy outcomes. The throughline isn't a conspiracy. It's a logic: risk was privatized, asymmetric information was monetized, and the distinction between investment and speculation was systematically blurred.</p>
+
+      <p>The book tracks this transformation through specific cases and actors rather than abstract forces. It uses the career of Howard Lutnick — from Cantor Fitzgerald's post-9/11 survival to his role as a Bitcoin evangelist to his position in the Trump administration — as a recurring figure who embodies the continuities between Wall Street's financial engineering and the crypto speculation economy. The game didn't change; the instruments did.</p>
+
+      <p>The theoretical intervention the book makes is to propose <em>homo speculans</em> as the successor figure to the neoliberal <em>homo economicus</em>: where the rational actor of economic theory made calculated investments in human capital, the speculative subject bets on outcomes they cannot control, sustained by the ideological conviction that the market rewards the bold and punishes only the unlucky. This is not just an economic category but a moral one — it shapes how people understand financial failure, who they blame, and what remedies they find credible.</p>
+
+      <h3>Chapter outline</h3>
+      <ul class="chapter-list">
+        <li class="chapter-item">
+          <span class="chapter-num">Ch. 1</span>
+          <div>
+            <p class="chapter-title">The Confidence Economy</p>
+            <p class="chapter-sub">How the confidence game moved from the margins to the center — a genealogy from nineteenth-century fraud to contemporary financial instruments</p>
+          </div>
+        </li>
+        <li class="chapter-item">
+          <span class="chapter-num">Ch. 2</span>
+          <div>
+            <p class="chapter-title">The Gamblification of Everything</p>
+            <p class="chapter-sub">401(k)s, Robinhood, sports betting, and prediction markets — the mechanisms by which risk was redistributed from institutions to individuals</p>
+          </div>
+        </li>
+        <li class="chapter-item">
+          <span class="chapter-num">Ch. 3</span>
+          <div>
+            <p class="chapter-title">Homo Speculans</p>
+            <p class="chapter-sub">The speculative subject as successor to homo economicus — a moral as well as economic category</p>
+          </div>
+        </li>
+        <li class="chapter-item">
+          <span class="chapter-num">Ch. 4</span>
+          <div>
+            <p class="chapter-title">The Lutnick Throughline</p>
+            <p class="chapter-sub">Cantor Fitzgerald, crypto, and the Trump administration — one career as a map of the continuities between Wall Street and the grift economy</p>
+          </div>
+        </li>
+        <li class="chapter-item">
+          <span class="chapter-num">Ch. 5</span>
+          <div>
+            <p class="chapter-title">When Fraud Isn't Fraud</p>
+            <p class="chapter-sub">GameStop, crypto, and the epistemological problem: how markets without fundamentals make traditional fraud law incoherent</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="book-sidebar">
+      <h3>Project status</h3>
+      <ul class="book-meta">
+        <li><strong>Status</strong>Manuscript in progress — two chapters drafted</li>
+        <li><strong>Related essays</strong>Published in Liberal Currents and the Oxford Literary Review supplement</li>
+        <li><strong>Stage</strong>Proposal development</li>
+      </ul>
+
+      <h3>Previous books</h3>
+      <ul class="prev-books">
+        <li class="prev-book">
+          <p class="prev-book-title">Speculative Realism: Problems and Prospects</p>
+          <p class="prev-book-pub">Bloomsbury Press, 2014</p>
+        </li>
+        <li class="prev-book">
+          <p class="prev-book-title">The State of Sovereignty: Lessons from the Political Fictions of Modernity</p>
+          <p class="prev-book-pub">SUNY Press, 2012</p>
+        </li>
+        <li class="prev-book">
+          <p class="prev-book-title">The Bloomsbury Companion to Hannah Arendt <em>(ed.)</em></p>
+          <p class="prev-book-pub">Bloomsbury Press, 2020 — with Yasemin Sari</p>
+        </li>
+        <li class="prev-book">
+          <p class="prev-book-title">The Jean-Luc Nancy Dictionary <em>(ed.)</em></p>
+          <p class="prev-book-pub">Edinburgh University Press, 2015</p>
+        </li>
+        <li class="prev-book">
+          <p class="prev-book-title">The Meillassoux Dictionary <em>(ed.)</em></p>
+          <p class="prev-book-pub">Edinburgh University Press, 2014</p>
+        </li>
+      </ul>
+
+      <h3>Related reading</h3>
+      <ul class="prev-books">
+        <li class="prev-book">
+          <p class="prev-book-title"><a href="https://www.liberalcurrents.com/the-grift-society/" target="_blank" style="color:var(--ink);text-decoration:none;">"The Grift Society" — Liberal Currents</a></p>
+        </li>
+        <li class="prev-book">
+          <p class="prev-book-title"><a href="https://olrsupplement.com/2025/12/08/a-hell-without-end-neoliberalism-and-the-grift-society/" target="_blank" style="color:var(--ink);text-decoration:none;">"A Hell Without End: Neoliberalism and the Grift Society" — OLR Supplement</a></p>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -910,52 +1051,38 @@
 
   <div class="about-body">
     <div class="about-main">
-      <p>I'm an editor and writer who covers the intersection of economic power, financial markets, and everyday life — the places where a Fed decision or a tariff schedule or a corporate diversity rollback lands on real people with real bills.</p>
+      <p class="lede">I'm an editor and writer who covers the intersection of economic power, financial markets, and everyday life — the places where a Fed decision or a tariff schedule or a corporate diversity rollback lands on real people with real bills.</p>
 
-      <p>For the past decade I've worked in financial and business journalism, most recently as a Senior Editor at Investopedia, where I led a team of ten, produced and edited hundreds of articles, and built more than 1,500 original data visualizations. Along the way I've been part of the conversation about what financial journalism looks like in the post-search era — how editors build audiences through discovery and social rather than keyword traffic, and what that means for how stories are told.</p>
+      <p>For the past decade I've worked at Investopedia, one of the web's largest personal finance destinations, most recently as Senior Editor. In that role I've directed day-to-day editorial workflow for a ten-person team, produced and edited hundreds of articles annually, built more than 1,500 original data visualizations, and helped lead the publication's strategic response to the post-SEO content landscape as a member of the Google Discover optimization taskforce. I've also maintained an unusually active writing output for a senior editor — three to five bylined pieces per week, covering breaking news, data investigations, policy analysis, and narrative features simultaneously.</p>
 
-      <p>My background is unusual for financial journalism. Before moving into editorial work, I trained as a philosopher — my PhD focused on political theory and continental thought — and that formation shapes how I think about economic stories. I'm drawn to the structural over the symptomatic, the historical over the immediately reactive, the question that doesn't have an easy answer. It's why I spent months reporting on AI's effect on labor markets, tracing the argument back to earlier technology cycles. It's why a story about financial advisors and diversity became a long-form investigation into decades of industry failure rather than a round-up of opinion.</p>
+      <p>My background is unusual for financial journalism. Before moving into editorial work full-time, I trained as a philosopher — my PhD focused on political theory and continental thought, and I held faculty positions at several universities over nearly two decades. That formation shapes how I think about economic stories: I'm drawn to the structural over the symptomatic, the historical over the immediately reactive, the question behind the question. It's why a story about 401(k)s becomes an inquiry into how ordinary Americans were quietly conscripted into financial speculation. It's why a story about financial advisors and diversity became a long-form investigation into decades of industry failure rather than an opinion survey.</p>
 
-      <p>I'm currently at work on a book — <em>Grift Society</em> — examining how speculation and confidence became the organizing principles of contemporary American capitalism, from 401(k)s to Robinhood to prediction markets. The project sits at the intersection of financial journalism and critical theory, and it's been shaping how I think about money stories for years.</p>
+      <p>I'm currently at work on <em>Grift Society</em>, a book examining how speculation and confidence games became the organizing principles of contemporary American capitalism — from 401(k)s and Robinhood to prediction markets and crypto. The project sits at the intersection of financial journalism and critical theory, and it has been shaping how I think about money stories for years. I've published two previous books (Bloomsbury Press and SUNY Press) and several edited volumes through Edinburgh University Press, Bloomsbury, and SUNY Press.</p>
 
-      <p>I'm based in New Orleans with my wife Jennifer, editor of Forbes Travel Guide. I'm looking for senior editorial roles — editing, writing, strategy — at publications where analytical depth and clear prose are treated as compatible rather than competing virtues.</p>
+      <p>I'm based in New Orleans with my wife Jennifer, editor of Forbes Travel Guide. I'm looking for senior editorial roles — editing, writing, or strategy — at publications where analytical depth and clear prose are treated as compatible rather than competing virtues.</p>
     </div>
 
     <div class="about-sidebar">
       <h3>Current roles</h3>
       <ul class="role-list">
-        <li>
-          <strong>Senior Editor</strong>
-          <span>Investopedia</span>
-        </li>
-        <li>
-          <strong>Adjunct Faculty</strong>
-          <span>Contemporary Ethics &amp; Critical Thinking<br>Columbia Southern University</span>
-        </li>
-        <li>
-          <strong>Co-Series Editor</strong>
-          <span>New Perspectives in Ontology<br>Edinburgh University Press</span>
-        </li>
-        <li>
-          <strong>Secretary-Treasurer</strong>
-          <span>Association for Philosophy &amp; Literature</span>
-        </li>
+        <li><strong>Senior Editor</strong><span>Investopedia</span></li>
+        <li><strong>Adjunct Faculty</strong><span>Contemporary Ethics &amp; Critical Thinking — Columbia Southern University</span></li>
+        <li><strong>Co-Series Editor</strong><span>New Perspectives in Ontology — Edinburgh University Press</span></li>
+        <li><strong>Executive Committee</strong><span>Association for Philosophy and Literature</span></li>
       </ul>
 
       <h3>Education</h3>
       <ul class="role-list">
-        <li>
-          <strong>PhD, Philosophy</strong>
-          <span>DePaul University</span>
-        </li>
+        <li><strong>PhD, Philosophy</strong><span>DePaul University — with distinction</span></li>
+        <li><strong>MA, Philosophy</strong><span>DePaul University — with distinction</span></li>
+        <li><strong>BA, Philosophy &amp; Political Science</strong><span>Stony Brook University</span></li>
       </ul>
 
-      <h3>Current project</h3>
+      <h3>Selected fellowships</h3>
       <ul class="role-list">
-        <li>
-          <strong><em>Grift Society</em></strong>
-          <span>Book in progress — how speculation became the organizing principle of contemporary capitalism</span>
-        </li>
+        <li><span>Visiting Research Fellow, Institute for Advanced Study, Durham University</span></li>
+        <li><span>Visiting Research Fellow, Humanities Research Centre, Australian National University</span></li>
+        <li><span>Visiting Professor, Institut für Philosophie, University of Augsburg</span></li>
       </ul>
     </div>
   </div>
@@ -963,22 +1090,22 @@
   <div class="contact-block">
     <div>
       <h2>Get in touch</h2>
-      <p>Available for senior editorial roles, writing assignments, and editorial consulting.</p>
-    </div>
-    <a class="contact-link" href="mailto:peter.gratton@investopedia.com">peter.gratton@investopedia.com</a>
-    <div style="display:flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
-      <a class="download-btn" href="#">↓ Download résumé</a>
-      <a class="download-btn" href="#">↓ Download CV</a>
+      <p>Available for senior editorial roles, writing assignments, and editorial consulting. Happy to discuss fit for specific opportunities.</p>
+      <a class="contact-link" href="/cdn-cgi/l/email-protection#3a4a575d485b4e4e55547a5d575b535614595557"><span class="__cf_email__" data-cfemail="4d3d202a3f2c393922230d2a202c2421632e2220">[email&#160;protected]</span></a>
+      <div class="download-row">
+        <a class="download-btn" href="#">↓ Download résumé</a>
+        <a class="download-btn" href="#">↓ Download CV</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>Peter Gratton — Editor &amp; Writer</p>
-  <p>New Orleans, LA &nbsp;·&nbsp; petergratton.com</p>
+  <p>Peter Gratton — Editor &amp; Writer — New Orleans, LA</p>
+  <p>pmgratton.github.io</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
@@ -986,6 +1113,12 @@
     document.getElementById('nav-' + id).classList.add('active');
     window.scrollTo(0, 0);
   }
-</script>
-</body>
-</html>
+
+  function toggleCat(id) {
+    const card = document.querySelector(`[onclick="toggleCat('${id}')"]`);
+    const articles = document.getElementById('articles-' + id);
+    const isOpen = card.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.cat-row.open').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.cat-articles.open').forEach(a => a.classList.remove('open'));
+    // Open thi
